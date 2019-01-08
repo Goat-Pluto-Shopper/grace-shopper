@@ -10,9 +10,6 @@ const Item = db.define('item', {
       notEmpty: true
     }
   },
-  shortDescription: {
-    type: Sequelize.STRING
-  },
   description: {
     type: Sequelize.TEXT
   },

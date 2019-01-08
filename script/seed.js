@@ -25,7 +25,6 @@ async function seed() {
   const items = await Promise.all([
     Item.create({
       name: 'Avalon',
-      shortDescription: 'The Resistance: Avalon Social Deduction Game',
       description:
         "The Resistance: Avalon pits the forces of Good and Evil in a battle to control the future of civilization. Arthur represents the future of Britain, a promise of prosperity and honor, yet hidden among his brave warriors are Mordred's unscrupulous minions. These forces of evil are few in number but have knowledge of each other and remain hidden from all but one of Arthur's servants. Merlin alone knows the agents of evil, but he must speak of this only in riddles. If his true identity is discovered, all will be lost.",
       price: 19.99,
@@ -36,7 +35,6 @@ async function seed() {
     }),
     Item.create({
       name: 'Uno',
-      shortDescription: 'The best game ever',
       price: 10.28,
       category: 'card'
     })
@@ -46,12 +44,18 @@ async function seed() {
     Order.create(
       {
         date: '2018-10-15 19:10:25-07',
-        // purchasedItems: {'1': 1, '2': 1},
-        total: 30.27
+        total: 30.27,
+        streetAddress: '123 Alphabet Ave',
+        city: 'New York',
+        state: 'NY',
+        zipcode: 10001
       },
       Order.create({
-        // purchasedItems: {'1': 1, '2': 1},
-        total: 30.27
+        total: 30.27,
+        streetAddress: '456 Chickpea Ave.',
+        city: 'San Francisco',
+        state: 'CA',
+        zipcode: 94602
       })
     )
   ])

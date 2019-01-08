@@ -10,6 +10,37 @@ const Order = db.define('order', {
   total: {
     // total price
     type: Sequelize.DECIMAL(10, 2) // check if this rounds correctly
+  },
+  streetAddress: {
+    type: Sequelize.STRING,
+    allowNull: false,
+    validate: {
+      notEmpty: true
+    }
+  },
+  aptNum: {
+    type: Sequelize.STRING
+  },
+  city: {
+    type: Sequelize.STRING,
+    allowNull: false,
+    validate: {
+      notEmpty: true
+    }
+  },
+  state: {
+    type: Sequelize.STRING,
+    allowNull: false,
+    validate: {
+      notEmpty: true
+    }
+  },
+  zipcode: {
+    type: Sequelize.INTEGER,
+    allowNull: false,
+    validate: {
+      notEmpty: true
+    }
   }
 })
 
