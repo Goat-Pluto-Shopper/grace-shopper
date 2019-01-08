@@ -32,7 +32,7 @@ const Item = db.define('item', {
   },
   category: {
     // board or card
-    type: Sequelize.STRING
+    type: Sequelize.ENUM('board', 'card')
   },
   ageRange: {
     type: Sequelize.ENUM('4-7', '7-12', '12+')
