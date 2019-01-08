@@ -1,17 +1,60 @@
 'use strict'
 
 const db = require('../server/db')
-const {User} = require('../server/db/models')
+const {User, Item, Order} = require('../server/db/models')
 
 async function seed() {
   await db.sync({force: true})
   console.log('db synced!')
 
   const users = await Promise.all([
-    User.create({email: 'cody@email.com', password: '123'}),
-    User.create({email: 'murphy@email.com', password: '123'})
+    User.create({
+      email: 'cody@email.com',
+      password: '123',
+      firstName: 'Cody',
+      lastName: 'Pugman'
+    }),
+    User.create({
+      email: 'murphy@email.com',
+      password: '123',
+      firstName: 'Murphy',
+      lastName: 'McGrady'
+    })
   ])
 
+  const items = await Promise.all([
+    Item.create({
+      name: 'Avalon',
+      shortDescription: 'The Resistance: Avalon Social Deduction Game',
+      description:
+        "The Resistance: Avalon pits the forces of Good and Evil in a battle to control the future of civilization. Arthur represents the future of Britain, a promise of prosperity and honor, yet hidden among his brave warriors are Mordred's unscrupulous minions. These forces of evil are few in number but have knowledge of each other and remain hidden from all but one of Arthur's servants. Merlin alone knows the agents of evil, but he must speak of this only in riddles. If his true identity is discovered, all will be lost.",
+      price: 19.99,
+      imageUrl:
+        'https://images-na.ssl-images-amazon.com/images/I/71ooTJfPLPL._SL1159_.jpg',
+      category: 'board',
+      ageRange: '12+'
+    }),
+    Item.create({
+      name: 'Uno',
+      shortDescription: 'The best game ever',
+      price: 10.28,
+      category: 'card'
+    })
+  ])
+
+  const order = await Promise.all([
+    Order.create(
+      {
+        date: '2018-10-15 19:10:25-07',
+        // purchasedItems: {'1': 1, '2': 1},
+        total: 30.27
+      },
+      Order.create({
+        // purchasedItems: {'1': 1, '2': 1},
+        total: 30.27
+      })
+    )
+  ])
   console.log(`seeded ${users.length} users`)
   console.log(`seeded successfully`)
 }

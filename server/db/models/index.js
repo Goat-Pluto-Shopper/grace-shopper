@@ -5,8 +5,9 @@ const db = require('../db')
 
 // Model Associations
 Order.belongsTo(User)
-User.hasMany(Orders)
-Order.hasMany(Item)
+User.hasMany(Order)
+Item.belongsToMany(Order, {through: 'orderedItems'})
+Order.belongsToMany(Item, {through: 'orderedItems'})
 
 /**
  * If we had any associations to make, this would be a great place to put them!
@@ -23,5 +24,7 @@ Order.hasMany(Item)
  */
 module.exports = {
   User,
-  Order
+  Order,
+  db,
+  Item
 }

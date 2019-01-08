@@ -4,10 +4,8 @@ const db = require('../db')
 
 const Order = db.define('order', {
   date: {
-    type: Sequelize.DATE
-  },
-  items: {
-    type: Sequelize.JSON
+    type: Sequelize.DATE,
+    defaultValue: Sequelize.NOW
   },
   total: {
     // total price
