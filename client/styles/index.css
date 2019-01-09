@@ -1,0 +1,19 @@
+:root {
+  --primary: #cda36c;
+  --dark: #a27845;
+  --brown: #4f382e;
+  --gray: #cac9d0;
+  --white: #fff;
+}
+
+body {
+  background: var(--gray);
+  margin: 0;
+}
+
+/* tablet */
+@media only screen and (min-width: 768px) {
+  body {
+    background: green;
+  }
+}
