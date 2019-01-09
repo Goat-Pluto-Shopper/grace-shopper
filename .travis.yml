@@ -16,12 +16,12 @@ install:
 before_script:
   - psql -c 'create database "goat-pluto-shopper-test";' -U postgres # remember to change this name if you change it elsewhere (e.g. package.json)
 
-# before_deploy:
-#   - npm run build-client # make the bundle
-#   - rm -rf node_modules # omit from the tarball, since we skip cleanup
-# deploy:
-#   skip_cleanup: true # prevents travis from deleting the build
-#   provider: heroku
-#   app: YOUR-HEROKU-APP-NAME-HERE # see README
-#   api_key:
-#     secure: YOUR-***ENCRYPTED***-API-KEY-HERE # see README
+before_deploy:
+  - npm run build-client # make the bundle
+  - rm -rf node_modules # omit from the tarball, since we skip cleanup
+deploy:
+  skip_cleanup: true # prevents travis from deleting the build
+  provider: heroku
+  app: pluto-games # see README
+  api_key:
+    secure: 'B0NhZRrGZGVGgQlok05DhiUf/m1RsLRCTLzFeiGs7Dh+cr91Igj9tI0pMKX5WsXoVQ01zjBfYFaVvXkmqU+Tw/S22wCCYsikV7gxo6Pa62Isjks6NS/pUp4W26yeJ2MHLd9V9Ul/mJSPp4tzC+kmkZjMKZ9lGIMqb7Rb4XBC5LMNWJd5OaCbcDG9QvJy/ypJwHJJjAJeN4BJeKcRKPosIsCVt7/2kHfWT9YiJZ9KAm1ZYWhIDnWcKOgcPIm7TnSdqy2ni3rRrjhv67ttYLmJ4D4XAkrplFxukn9ZNkjuh4nw8zma4uXxPpZumaQLl+8q7/3OVruYcarzsdrHpjSZK3crMXAEECtyO9OE0uPRqP1Nz+oZ1sT1gxk552gMrjvKXH0878C8QVngssKr8cY/YZDeFFyT2+g2YMSA3VdQ4+FM6U4veT6s7KxBjqDnh3HD8CrzDpr9/lRdwQI4J1gmH1KewvliyVKtx793qkEqYOnugycU7TSP7NyAe9DQT6DegLj7tyKNL0i/flEeIT2ySXqQdeg4GrlHhhd3lhwExh3kQmQy54aXvi0DH0uS3ihsOn4+tX0cX4W1mgb04Edp/U+jAwBOi6UpVZBRKSMMywRGXRmETuCI854O7BhfqHhQHXL/OnmBrfqg1E3A3Qdi42LGfnDMiceqhNNBwTTn7uI=' # see README
