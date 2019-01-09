@@ -21,7 +21,14 @@ router.post('/login', async (req, res, next) => {
 
 router.post('/signup', async (req, res, next) => {
   try {
-    const user = await User.create(req.body)
+    console.log(req.body, 'req body from sign up')
+    let info = {
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      email: req.body.email,
+      password: req.body.password
+    }
+    const user = await User.create(info)
     req.login(user, err => (err ? next(err) : res.json(user)))
   } catch (err) {
     if (err.name === 'SequelizeUniqueConstraintError') {
@@ -33,9 +40,10 @@ router.post('/signup', async (req, res, next) => {
 })
 
 router.post('/logout', (req, res) => {
+  console.log('hit ogout')
   req.logout()
   req.session.destroy()
-  res.redirect('/')
+  res.status(200).end()
 })
 
 router.get('/me', (req, res) => {
