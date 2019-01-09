@@ -16,7 +16,9 @@ const Navbar = () => {
     // </nav>
     <nav id="nav-top">
       <div id="ico">
-        <img src="imgs/placeholderLogo.png" className="nav-logo" alt="logo" />
+        <Link to="/">
+          <img src="imgs/placeholderLogo.png" className="nav-logo" alt="logo" />
+        </Link>
       </div>
       <div id="nav">
         <ul>
@@ -26,13 +28,15 @@ const Navbar = () => {
           <Link to="/board">
             <li>Board</li>
           </Link>
-          <Link to="card">
+          <Link to="/card">
             <li>Card</li>
           </Link>
         </ul>
       </div>
       <div id="nav-right">
-        <span>Login</span>
+        <Link to="/login">
+          <span className="nav-login">Login</span>
+        </Link>
         <i className="fas fa-shopping-cart" />
       </div>
     </nav>
