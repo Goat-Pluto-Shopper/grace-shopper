@@ -30,17 +30,30 @@ export const me = () => async dispatch => {
   }
 }
 
-export const auth = (email, password, method) => async dispatch => {
+// the methods are signup or login
+export const auth = (
+  firstName,
+  lastName,
+  email,
+  password,
+  method
+) => async dispatch => {
   let res
   try {
-    res = await axios.post(`/auth/${method}`, {email, password})
+    res = await axios.post(`/auth/${method}`, {
+      firstName,
+      lastName,
+      email,
+      password
+    })
   } catch (authError) {
     return dispatch(getUser({error: authError}))
   }
 
   try {
     dispatch(getUser(res.data))
-    history.push('/home')
+    console.log(history, 'history')
+    history.goBack()
   } catch (dispatchOrHistoryErr) {
     console.error(dispatchOrHistoryErr)
   }

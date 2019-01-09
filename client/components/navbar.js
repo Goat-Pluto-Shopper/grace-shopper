@@ -4,7 +4,7 @@ import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {logout} from '../store'
 
-const Navbar = () => {
+const Navbar = props => {
   const white = '#fff'
   return (
     // <nav id="nav-top">
@@ -35,7 +35,9 @@ const Navbar = () => {
       </div>
       <div id="nav-right">
         <Link to="/login">
-          <span className="nav-login">Login</span>
+          <span className="nav-login">
+            {props.isLoggedIn ? props.user.firstName : 'Login'}
+          </span>
         </Link>
         <i className="fas fa-shopping-cart" />
       </div>
@@ -48,7 +50,8 @@ const Navbar = () => {
  */
 const mapState = state => {
   return {
-    isLoggedIn: !!state.user.id
+    isLoggedIn: !!state.user.id,
+    user: state.user
   }
 }
 

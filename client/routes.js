@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {withRouter, Route, Switch} from 'react-router-dom'
 import PropTypes from 'prop-types'
-import {Login, Signup, UserHome, AllItems, NotFound} from './components'
+import {LogInForm, SignUpForm, AllItems, NotFound} from './components'
 import {me} from './store'
 
 /**
@@ -20,13 +20,14 @@ class Routes extends Component {
       <Switch>
         {/* Routes placed here are available to all visitors */}
         <Route exact path="/" component={AllItems} />
-        <Route path="/login" component={Login} />
-        <Route path="/signup" component={Signup} />
+        <Route path="/login" component={LogInForm} />
+        <Route path="/signup" component={SignUpForm} />
         <Route path="/test" component={AllItems} />
         {isLoggedIn && (
           <Switch>
             {/* Routes placed here are only available after logging in */}
-            <Route path="/home" component={UserHome} />
+            {/* redirects here after login might need to change that especially if checking out*/}
+            <Route path="/home" component={AllItems} />
           </Switch>
         )}
         {/* Displays store homepage (all items view) regarless of whether user is logged in. */}
