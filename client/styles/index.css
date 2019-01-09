@@ -1,3 +1,5 @@
+@import './navbar.css';
+
 :root {
   --primary: #cda36c;
   --dark: #a27845;
