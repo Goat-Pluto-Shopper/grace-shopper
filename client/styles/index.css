@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css?family=Happy+Monkey|Open+Sans');
+@import './navbar.css';
+@import './footer.css';
+
 :root {
   --primary: #cda36c;
   --dark: #a27845;
@@ -9,11 +13,23 @@
 body {
   background: var(--gray);
   margin: 0;
+  font-family: 'Open Sans', sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: 'Happy Monkey', cursive;
+}
+
+p {
+  font-family: 'Open Sans', sans-serif;
 }
 
 /* tablet */
 @media only screen and (min-width: 768px) {
-  body {
+  /* body {
     background: green;
-  }
+  } */
 }

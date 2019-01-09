@@ -1,0 +1,65 @@
+/* place hold */
+a {
+  color: white;
+  text-decoration: none;
+}
+a:visited {
+  color: white;
+}
+
+#nav-top {
+  width: 100%;
+  min-height: 50px;
+  background: var(--brown);
+  color: white;
+  display: flex;
+  flex: 1;
+}
+
+.nav-logo {
+  width: 50px;
+  height: 50px;
+}
+
+#ico {
+  width: 100%;
+  display: flex;
+  padding: 1em;
+  align-items: center;
+}
+
+#nav {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#nav ul {
+  padding: 0;
+  margin: 0;
+}
+
+#nav li {
+  display: inline-block;
+  margin: 0.4em;
+  font-size: 1.2em;
+}
+
+#nav-right {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 1em;
+}
+
+.nav-login {
+  padding-right: 1em;
+}
+
+@media only screen and (min-width: 768px) {
+  #icoOpen {
+    display: none;
+  }
+}

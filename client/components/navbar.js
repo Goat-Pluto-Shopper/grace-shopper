@@ -4,29 +4,44 @@ import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {logout} from '../store'
 
-const Navbar = ({handleClick, isLoggedIn}) => (
-  <div>
-    <h1>BOILERMAKER</h1>
-    <nav>
-      {isLoggedIn ? (
-        <div>
-          {/* The navbar will show these links after you log in */}
-          <Link to="/home">Home</Link>
-          <a href="#" onClick={handleClick}>
-            Logout
-          </a>
-        </div>
-      ) : (
-        <div>
-          {/* The navbar will show these links before you log in */}
-          <Link to="/login">Login</Link>
-          <Link to="/signup">Sign Up</Link>
-        </div>
-      )}
+const Navbar = () => {
+  const white = '#fff'
+  return (
+    // <nav id="nav-top">
+    //   <svg width="30" height="30" id="icoOpen">
+    //     <path d="M0,5 30,5" stroke={white} strokeWidth="5" />
+    //     <path d="M0,14 30,14" stroke={white} strokeWidth="5" />
+    //     <path d="M0,23 30,23" stroke={white} strokeWidth="5" />
+    //   </svg>
+    // </nav>
+    <nav id="nav-top">
+      <div id="ico">
+        <Link to="/">
+          <img src="imgs/placeholderLogo.png" className="nav-logo" alt="logo" />
+        </Link>
+      </div>
+      <div id="nav">
+        <ul>
+          <Link to="/">
+            <li>Show All</li>
+          </Link>
+          <Link to="/board">
+            <li>Board</li>
+          </Link>
+          <Link to="/card">
+            <li>Card</li>
+          </Link>
+        </ul>
+      </div>
+      <div id="nav-right">
+        <Link to="/login">
+          <span className="nav-login">Login</span>
+        </Link>
+        <i className="fas fa-shopping-cart" />
+      </div>
     </nav>
-    <hr />
-  </div>
-)
+  )
+}
 
 /**
  * CONTAINER
