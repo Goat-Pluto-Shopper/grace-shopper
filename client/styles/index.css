@@ -1,0 +1,12 @@
+:root {
+  --primary: #cda36c;
+  --dark: #a27845;
+  --brown: #4f382e;
+  --gray: #cac9d0;
+  --white: #fff;
+}
+
+body {
+  background: var(--gray);
+  margin: 0;
+}
