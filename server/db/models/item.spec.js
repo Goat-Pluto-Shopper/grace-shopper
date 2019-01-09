@@ -27,7 +27,7 @@ describe('Item model', () => {
     })
 
     it('returns true if the price is correct', () => {
-      expect(avalon.price).to.be.equal('1999')
+      expect(avalon.price).to.be.equal(1999)
     })
 
     it('returns true if game category is an accepted value', () => {
