@@ -54,6 +54,9 @@ export const auth = (
     dispatch(getUser(res.data))
     console.log(history, 'history')
     history.goBack()
+    if (history.location.pathname === '/login') {
+      history.push('/')
+    }
   } catch (dispatchOrHistoryErr) {
     console.error(dispatchOrHistoryErr)
   }
@@ -63,7 +66,7 @@ export const logout = () => async dispatch => {
   try {
     await axios.post('/auth/logout')
     dispatch(removeUser())
-    history.push('/login')
+    history.push('/')
   } catch (err) {
     console.error(err)
   }

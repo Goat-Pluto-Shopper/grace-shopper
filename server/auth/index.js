@@ -43,7 +43,7 @@ router.post('/logout', (req, res) => {
   console.log('hit ogout')
   req.logout()
   req.session.destroy()
-  res.redirect('/pop')
+  res.status(200).end()
 })
 
 router.get('/me', (req, res) => {
