@@ -12,7 +12,8 @@ const App = () => {
       {/* switch happens */}
       <main>
         <SideBar />
-        <AllItems />
+        <Routes />
+        {/* <AllItems /> */}
       </main>
       {/* right here */}
       <Footer />
