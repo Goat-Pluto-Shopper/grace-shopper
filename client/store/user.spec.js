@@ -1,7 +1,7 @@
 /* global describe beforeEach afterEach it */
 
 import {expect} from 'chai'
-import {me, logout} from './user'
+import {me, logout, auth} from './user'
 import axios from 'axios'
 import MockAdapter from 'axios-mock-adapter'
 import configureMockStore from 'redux-mock-store'
@@ -44,7 +44,29 @@ describe('thunk creators', () => {
       await store.dispatch(logout())
       const actions = store.getActions()
       expect(actions[0].type).to.be.equal('REMOVE_USER')
-      expect(history.location.pathname).to.be.equal('/login')
+      expect(history.location.pathname).to.be.equal('/')
+    })
+  })
+
+  describe('login', () => {
+    it('redirects to home page if previous history was login', async () => {
+      history.push('/login')
+      history.push('/login')
+      mockAxios.onPost('/auth/login').replyOnce(200)
+      await store.dispatch(
+        auth(null, null, 'cody@email.com', '1234545', 'login')
+      )
+      expect(history.location.pathname).to.be.equal('/')
+    })
+
+    it('redirects back to previous page if not at login', async () => {
+      history.push('/card')
+      history.push('login')
+      mockAxios.onPost('/auth/login').replyOnce(200)
+      await store.dispatch(
+        auth(null, null, 'cody@email.com', '1234545', 'login')
+      )
+      expect(history.location.pathname).to.be.equal('/card')
     })
   })
 })

@@ -52,7 +52,6 @@ export const auth = (
 
   try {
     dispatch(getUser(res.data))
-    console.log(history, 'history')
     history.goBack()
     if (history.location.pathname === '/login') {
       history.push('/')
