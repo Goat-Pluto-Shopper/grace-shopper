@@ -5,7 +5,7 @@ import React from 'react'
 import enzyme, {shallow} from 'enzyme'
 // import enzyme, {mount} from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
-import {AllItems} from './allItems'
+import {AllItems} from './AllItems'
 
 const adapter = new Adapter()
 enzyme.configure({adapter})
