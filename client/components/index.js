@@ -6,7 +6,7 @@
 export {default as Navbar} from './navbar'
 export {default as Footer} from './Footer'
 export {default as UserHome} from './user-home'
-export {default as AllItems} from './AllItems'
+export {default as AllItems} from './allItems'
 export {default as Header} from './Header'
 export {default as SideBar} from './SideBar'
 export {Login, Signup} from './auth-form'
