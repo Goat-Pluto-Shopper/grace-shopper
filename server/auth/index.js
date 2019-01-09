@@ -40,9 +40,10 @@ router.post('/signup', async (req, res, next) => {
 })
 
 router.post('/logout', (req, res) => {
+  console.log('hit ogout')
   req.logout()
   req.session.destroy()
-  res.redirect('/')
+  res.redirect('/pop')
 })
 
 router.get('/me', (req, res) => {

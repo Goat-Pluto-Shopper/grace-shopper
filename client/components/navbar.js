@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {logout} from '../store'
+import UserNavBar from './UserNavBar'
 
 const Navbar = props => {
   const white = '#fff'
@@ -34,11 +35,13 @@ const Navbar = props => {
         </ul>
       </div>
       <div id="nav-right">
-        <Link to="/login">
-          <span className="nav-login">
-            {props.isLoggedIn ? props.user.firstName : 'Login'}
-          </span>
-        </Link>
+        {props.isLoggedIn ? (
+          <UserNavBar firstName={props.user.firstName} />
+        ) : (
+          <Link to="/login">
+            <span className="nav-login">Login</span>
+          </Link>
+        )}
         <i className="fas fa-shopping-cart" />
       </div>
     </nav>
