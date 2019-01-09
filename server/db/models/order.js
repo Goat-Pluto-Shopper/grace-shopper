@@ -8,8 +8,8 @@ const Order = db.define('order', {
     defaultValue: Sequelize.NOW
   },
   total: {
-    // total price
-    type: Sequelize.DECIMAL(10, 2) // check if this rounds correctly
+    // total price in pennies
+    type: Sequelize.INTEGER
   },
   streetAddress: {
     type: Sequelize.STRING,

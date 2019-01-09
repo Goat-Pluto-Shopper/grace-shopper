@@ -17,8 +17,9 @@ const Item = db.define('item', {
     // item supply
     type: Sequelize.INTEGER
   },
+  // price will be pennies and converted on the frontend
   price: {
-    type: Sequelize.DECIMAL(10, 2),
+    type: Sequelize.INTEGER,
     allowNull: false,
     validate: {
       notEmpty: true
