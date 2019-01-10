@@ -22,6 +22,7 @@ class UserProfile extends Component {
             <h3>
               {user.firstName} {user.lastName}
             </h3>
+            <h3>{user.email}</h3>
           </div>
         </div>
         <div>past ordered items</div>
