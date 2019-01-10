@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css?family=Staatliches');
 @import './navbar.css';
 @import './footer.css';
+@import './singleItem.css';
 
 :root {
   --primary: #cda36c;

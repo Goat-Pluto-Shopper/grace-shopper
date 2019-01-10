@@ -23,26 +23,29 @@ class SingleItem extends Component {
     return (
       <React.Fragment>
         {this.props.selectedItem.name && (
-          <React.Fragment>
-            <div>
+          <div id="singleItemContainer">
+            <div id="singleItemImg">
               <img src={selectedItem.imageUrl} />
             </div>
-            <div>
+            <div id="singleItemInfo">
               <h1>{selectedItem.name}</h1>
               <h3>${selectedItem.price}</h3>
               <p>{selectedItem.description}</p>
               {/* need to add quantity component here */}
             </div>
-          </React.Fragment>
+          </div>
         )}
 
-        <div>
-          <h3>Related items</h3>
+        {relatedItems.length > 0 ? (
           <div>
-            {relatedItems.length > 0 &&
-              relatedItems.map(game => <ListItems key={game.id} game={game} />)}
+            <h3>Related items</h3>
+            <div id="singleRelatedContainer">
+              {relatedItems.map(game => (
+                <ListItems key={game.id} game={game} />
+              ))}
+            </div>
           </div>
-        </div>
+        ) : null}
       </React.Fragment>
     )
   }

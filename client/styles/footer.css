@@ -4,7 +4,14 @@ footer {
   background: var(--primary);
   color: white;
   display: inline-block;
-  flex-direction: row;
-  font-family: ‘Happy Monkey’, Arial, Helvetica, sans-serif;
   font-size: 1rem;
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer-item {
+  width: 100%;
+  text-align: center;
 }
