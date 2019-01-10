@@ -22,7 +22,7 @@ const store = createStore(reducer, persistedState, middleware)
 store.subscribe(
   throttle(() => {
     saveState({
-      cart: store.getState().cart
+      cart: store.getState().cart || []
     })
   }, 1000)
 )

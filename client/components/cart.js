@@ -4,31 +4,31 @@ import React, {Component} from 'react'
 import {fetchCart, getCartItems} from '../store/cart'
 import {loadState, saveState} from '../store/localStorage'
 
-const fakeItems = [
-  {
-    id: 1,
-    imageUrl: 'https://place-hold.it/300',
-    name: 'Uno',
-    price: 10.28
-  },
-  {
-    id: 2,
-    imageUrl: 'https://place-hold.it/300',
-    name: 'Avalon',
-    price: 19.99
-  },
-  {
-    id: 3,
-    imageUrl: 'https://place-hold.it/300',
-    name: 'Risk',
-    price: 19.97
-  }
-]
+// const fakeItems = [
+//   {
+//     id: 1,
+//     imageUrl: 'https://place-hold.it/300',
+//     name: 'Uno',
+//     price: 10.28
+//   },
+//   {
+//     id: 2,
+//     imageUrl: 'https://place-hold.it/300',
+//     name: 'Avalon',
+//     price: 19.99
+//   },
+//   {
+//     id: 3,
+//     imageUrl: 'https://place-hold.it/300',
+//     name: 'Risk',
+//     price: 19.97
+//   }
+// ]
 
 class Cart extends Component {
   componentDidMount() {
     // this.props.fetchCart()
-    this.props.getCartItems(fakeItems)
+    // this.props.getCartItems()
     // console.log('are there props on cart', this.props)
   }
 
@@ -36,6 +36,7 @@ class Cart extends Component {
     const {cart} = this.props
     console.log('props passed to cart', this.props)
     console.log('!!!!!', cart)
+    console.log('localStorage state', JSON.parse(localStorage.getItem('state')))
 
     return (
       <div>
@@ -48,9 +49,12 @@ class Cart extends Component {
               <div key={item.id}>
                 <img src={item.imageUrl} />
                 <p>{item.name}</p>
-                <p>{item.price}</p>
-                <button type="subtract">-</button>
-                <button type="add">+</button>
+                <p>${item.price}</p>
+                <div className="quantityBlock">
+                  <button type="subtract">-</button>
+                  <p>{item.cartQuantity}</p>
+                  <button type="add">+</button>
+                </div>
               </div>
             )
           })}

@@ -16,10 +16,12 @@ export const getCartItems = items => ({
   payload: items
 })
 
-export const addToCart = item => ({
-  type: ADD_TO_CART,
-  payload: item
-})
+export const addToCart = item => {
+  return {
+    type: ADD_TO_CART,
+    item
+  }
+}
 
 const removeCartItem = item => ({
   type: REMOVE_FROM_CART,
@@ -77,19 +79,24 @@ export const updateCart = item => async dispatch => {
 export default function cartReducer(cart = [], action) {
   switch (action.type) {
     case GET_CART_ITEMS:
-      return action.payload
+      return [action.payload]
     case ADD_TO_CART:
-      return [...cart, action.payload]
+      if (cart.includes(action.item.id)) {
+        return [...cart, action.item.cartQuantity++]
+      } else {
+        action.item.cartQuantity = 1
+        return [...cart, action.item]
+      }
     case REMOVE_FROM_CART:
       return [...cart.filter(item => item.id !== action.payload)]
     //NOT SURE ABOUT THIS ONE
-    case UPDATE_ITEM_QUANTITY:
-      return cart.map(item => {
-        if (item !== item.payload) {
-          return cart
-        }
-        return [...cart]
-      })
+    // case UPDATE_ITEM_QUANTITY:
+    //   return cart.map(item => {
+    //     if (item !== item.payload) {
+    //       return cart
+    //     }
+    //     return [...cart]
+    //   })
     default:
       return cart
   }
