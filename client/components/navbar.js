@@ -42,7 +42,9 @@ const Navbar = props => {
             <span className="nav-login">Login</span>
           </Link>
         )}
-        <i className="fas fa-shopping-cart" />
+        <Link to="/cart">
+          <i className="fas fa-shopping-cart" />
+        </Link>
       </div>
     </nav>
   )

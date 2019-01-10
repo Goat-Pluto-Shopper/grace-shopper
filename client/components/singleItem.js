@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 import {fetchSingleItem, fetchRelatedItems} from '../store/item'
 import {fetchToggle} from '../store/sideBarToggle'
 import ListItems from './ListItems'
+import AddToCart from './AddToCart'
 
 class SingleItem extends Component {
   componentDidMount() {
@@ -38,6 +39,7 @@ class SingleItem extends Component {
               <h3>${selectedItem.price}</h3>
               <p>{selectedItem.description}</p>
               {/* need to add quantity component here */}
+              <AddToCart item={this.props.selectedItem} />
             </div>
           </div>
         )}

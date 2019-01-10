@@ -2,16 +2,21 @@ import axios from 'axios'
 
 const GET_CART_ITEMS = 'GET_CART_ITEMS'
 const ADD_TO_CART = 'ADD_TO_CART'
-// const REMOVE_FROM_CART = 'REMOVE_FROM_CART'
+const REMOVE_FROM_CART = 'REMOVE_FROM_CART'
 const UPDATE_ITEM_QUANTITY = 'UPDATE_ITEM_QUANTITY'
 
+//initial state
+// {
+//   cart: []
+// }
+
 //action creators
-const getCartItems = items => ({
+export const getCartItems = items => ({
   type: GET_CART_ITEMS,
   payload: items
 })
 
-const addToCart = item => ({
+export const addToCart = item => ({
   type: ADD_TO_CART,
   payload: item
 })

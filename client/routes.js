@@ -7,7 +7,8 @@ import {
   SignUpForm,
   AllItems,
   NotFound,
-  SingleItem
+  SingleItem,
+  Cart
 } from './components'
 import {me} from './store'
 import singleItem from './components/singleItem'
@@ -31,6 +32,7 @@ class Routes extends Component {
         <Route path="/signup" component={SignUpForm} />
         <Route path="/board" component={SingleItem} />
         <Route path="/game/:id" component={SingleItem} />
+        <Route path="/cart" component={Cart} />
         {isLoggedIn && (
           <Switch>
             {/* Routes placed here are only available after logging in */}
