@@ -4,19 +4,38 @@ import {connect} from 'react-redux'
 import {fetchSingleItem} from '../store/item'
 
 class SingleItem extends Component {
-  componentDidMount() {}
+  componentDidMount() {
+    // console.log(this.props.match.params.id, 'props from single item');
+    this.props.fetchSingleItem(this.props.match.params.id)
+  }
 
   render() {
-    return <div>single game view</div>
+    const {selectedItem} = this.props
+    return (
+      <React.Fragment>
+        {this.props.selectedItem.name && (
+          <React.Fragment>
+            <div>
+              <img src={selectedItem.imageUrl} />
+            </div>
+            <div>
+              <h1>{selectedItem.name}</h1>
+              <h3>${selectedItem.price}</h3>
+              <p>{selectedItem.description}</p>
+            </div>
+          </React.Fragment>
+        )}
+      </React.Fragment>
+    )
   }
 }
 
 const mapStateToProps = state => ({
-  selectedItem: state.selectedItem
+  selectedItem: state.item.selectedItem
 })
 
 const mapDispatchToProps = dispatch => ({
-  fetchSingleItem: () => dispatch(fetchSingleItem())
+  fetchSingleItem: id => dispatch(fetchSingleItem(id))
 })
 
 export default withRouter(
