@@ -49,9 +49,12 @@ class Cart extends Component {
               <div key={item.id}>
                 <img src={item.imageUrl} />
                 <p>{item.name}</p>
-                <p>{item.price}</p>
-                <button type="subtract">-</button>
-                <button type="add">+</button>
+                <p>${item.price}</p>
+                <div className="quantityBlock">
+                  <button type="subtract">-</button>
+                  <p>{item.cartQuantity}</p>
+                  <button type="add">+</button>
+                </div>
               </div>
             )
           })}
