@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {withRouter} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {fetchSingleItem, fetchRelatedItems} from '../store/item'
+import {fetchToggle} from '../store/sideBarToggle'
 import ListItems from './ListItems'
 
 class SingleItem extends Component {
@@ -9,6 +10,7 @@ class SingleItem extends Component {
     // console.log(this.props.match.params.id, 'props from single item');
     this.props.fetchSingleItem(this.props.match.params.id)
     this.props.fetchRelatedItems(this.props.match.params.id)
+    this.props.fetchToggle(false)
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -16,6 +18,10 @@ class SingleItem extends Component {
       this.props.fetchSingleItem(this.props.match.params.id)
       this.props.fetchRelatedItems(this.props.match.params.id)
     }
+  }
+
+  componentWillUnmount() {
+    this.props.fetchToggle(true)
   }
 
   render() {
@@ -58,7 +64,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   fetchSingleItem: id => dispatch(fetchSingleItem(id)),
-  fetchRelatedItems: id => dispatch(fetchRelatedItems(id))
+  fetchRelatedItems: id => dispatch(fetchRelatedItems(id)),
+  fetchToggle: state => dispatch(fetchToggle(state))
 })
 
 export default withRouter(

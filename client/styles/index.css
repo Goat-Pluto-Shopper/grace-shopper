@@ -3,6 +3,7 @@
 @import './navbar.css';
 @import './footer.css';
 @import './singleItem.css';
+@import './main.css';
 
 :root {
   --primary: #cda36c;

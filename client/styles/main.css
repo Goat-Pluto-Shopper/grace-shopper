@@ -1,0 +1,13 @@
+main {
+  display: flex;
+  flex: 1;
+}
+
+#sidebar {
+  min-width: 25%;
+  background: greenyellow;
+}
+
+#main-container {
+  width: 100%;
+}
