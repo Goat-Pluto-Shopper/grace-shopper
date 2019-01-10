@@ -24,6 +24,9 @@ router.get('/related/:id', async (req, res, next) => {
         ageRange: currentGame.dataValues.ageRange,
         tags: {
           $overlap: currentGame.dataValues.tags
+        },
+        name: {
+          $ne: currentGame.dataValues.name
         }
       }
     })

@@ -10,6 +10,7 @@ import {
   SingleItem
 } from './components'
 import {me} from './store'
+import singleItem from './components/singleItem'
 
 /**
  * COMPONENT
@@ -28,6 +29,7 @@ class Routes extends Component {
         <Route exact path="/" component={AllItems} />
         <Route path="/login" component={LogInForm} />
         <Route path="/signup" component={SignUpForm} />
+        <Route path="/board" component={SingleItem} />
         <Route path="/game/:id" component={SingleItem} />
         {isLoggedIn && (
           <Switch>

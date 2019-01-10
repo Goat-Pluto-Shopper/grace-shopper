@@ -11,6 +11,13 @@ class SingleItem extends Component {
     this.props.fetchRelatedItems(this.props.match.params.id)
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.match.params.id !== this.props.match.params.id) {
+      this.props.fetchSingleItem(this.props.match.params.id)
+      this.props.fetchRelatedItems(this.props.match.params.id)
+    }
+  }
+
   render() {
     const {selectedItem, relatedItems} = this.props
     return (

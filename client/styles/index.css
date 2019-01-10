@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Happy+Monkey|Open+Sans');
+@import url('https://fonts.googleapis.com/css?family=Staatliches');
 @import './navbar.css';
 @import './footer.css';
 
@@ -25,6 +26,10 @@ h4 {
 
 p {
   font-family: 'Open Sans', sans-serif;
+}
+
+.stat-font {
+  font-family: 'Staatliches', cursive;
 }
 
 /* tablet */
