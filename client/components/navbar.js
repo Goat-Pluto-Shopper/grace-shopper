@@ -6,19 +6,19 @@ import {logout} from '../store'
 import UserNavBar from './UserNavBar'
 
 const Navbar = props => {
-  const white = '#fff'
   return (
-    // <nav id="nav-top">
-    //   <svg width="30" height="30" id="icoOpen">
-    //     <path d="M0,5 30,5" stroke={white} strokeWidth="5" />
-    //     <path d="M0,14 30,14" stroke={white} strokeWidth="5" />
-    //     <path d="M0,23 30,23" stroke={white} strokeWidth="5" />
-    //   </svg>
-    // </nav>
     <nav id="nav-top">
       <div id="ico">
         <Link to="/">
-          <img src="imgs/placeholderLogo.png" className="nav-logo" alt="logo" />
+          {/* <img src="imgs/placeholderLogo.png" className="nav-logo" alt="logo" /> */}
+          <h1 className="stat-font" style={{margin: '0'}}>
+            ({'\u00A0'} Pluto Games {'\u00A0'}
+            {'\u00A0'}
+            {'\u00A0'}
+            {'\u00A0'}
+            {'\u00A0'}
+            {'\u00A0'} )
+          </h1>
         </Link>
       </div>
       <div id="nav">

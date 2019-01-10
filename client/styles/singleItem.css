@@ -1,0 +1,30 @@
+#singleItemImg {
+  width: 45%;
+}
+
+#singleItemImg img {
+  max-width: 100%;
+  height: auto;
+}
+
+#singleItemInfo {
+  flex: 1;
+}
+
+#singleItemContainer {
+  display: flex;
+}
+
+#singleRelatedContainer {
+  display: flex;
+}
+
+#singleRelatedContainer .game {
+  width: 25%;
+}
+
+#singleRelatedContainer .game img {
+  max-width: 100%;
+  height: 250px;
+  object-fit: cover;
+}

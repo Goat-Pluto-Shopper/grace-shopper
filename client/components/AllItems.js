@@ -2,6 +2,8 @@ import React, {Component} from 'react'
 import {withRouter} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {fetchAllItems} from '../store/item'
+import {Link} from 'react-router-dom'
+import ListItems from './ListItems'
 
 class AllItems extends Component {
   async componentDidMount() {
@@ -14,14 +16,7 @@ class AllItems extends Component {
     return (
       <div>
         {allGames.map(game => {
-          return (
-            <div className="game" key={game.id}>
-              <img src={game.imageUrl} />
-              <h3>{game.name}</h3>
-              {/* change this to decimal!!! */}
-              <p>CHANGE ME TO DECIMAL{game.price}</p>
-            </div>
-          )
+          return <ListItems game={game} key={game.id} />
         })}
       </div>
     )

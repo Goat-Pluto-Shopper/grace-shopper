@@ -6,13 +6,15 @@ import history from '../history'
  */
 const GET_ALL_ITEMS = 'GET_ALL_ITEMS'
 const GET_SINGLE_ITEM = 'GET_SINGLE_ITEM'
+const GET_RELATED_ITEMS = 'GET_RELATED_ITEMS'
 
 /**
  * INITIAL STATE
  */
 const itemState = {
   allItems: [],
-  selectedItem: {}
+  selectedItem: {},
+  relatedItems: []
 }
 
 /**
@@ -26,6 +28,11 @@ export const getAllItems = items => ({
 const getSingleItem = item => ({
   type: GET_SINGLE_ITEM,
   item
+})
+
+const getRelatedItems = items => ({
+  type: GET_RELATED_ITEMS,
+  items
 })
 
 /**
@@ -50,6 +57,15 @@ export const fetchSingleItem = id => async dispatch => {
   }
 }
 
+export const fetchRelatedItems = id => async dispatch => {
+  try {
+    const res = await axios.get(`/api/games/related/${id}`)
+    dispatch(getRelatedItems(res.data || itemState.relatedItems))
+  } catch (err) {
+    console.error(err)
+  }
+}
+
 /**
  * REDUCER
  */
@@ -59,6 +75,8 @@ export default function(state = itemState, action) {
       return {...state, allItems: action.items}
     case GET_SINGLE_ITEM:
       return {...state, selectedItem: action.item}
+    case GET_RELATED_ITEMS:
+      return {...state, relatedItems: action.items}
     default:
       return state
   }
