@@ -16,3 +16,4 @@ export default store
 export * from './user'
 export * from './item'
 export * from './sideBarToggle'
+export * from './cart'
