@@ -272,36 +272,39 @@ const orders = [
   }
 ]
 
-db
-  .sync({force: true})
-  .then(() => {
-    console.log('databased sync')
-    return Promise.all([
-      User.bulkCreate(users, {returning: true}),
-      Item.bulkCreate(items, {returning: true}),
-      Order.bulkCreate(orders, {returning: true})
-    ])
-  })
-  .then(insertedData => {
-    const [users, items, orders] = insertedData
-    const [user1, user2] = users
-    const [item1, item2, item3] = items
-    const [order1, order2] = orders
-    return Promise.all([
-      order1.setUser(user1),
-      order2.setUser(user2),
-      order1.setItems([item1, item2, item3]),
-      order2.setItems([item1, item3])
-    ])
-  })
-  .then(() => {
-    console.log('seeded yay')
-  })
-  .catch(err => {
-    console.log('oh no error')
-    console.log(err)
-  })
-  .finally(() => {
-    console.log('closng db')
-    db.close()
-  })
+const seed = async () => {
+  await db.sync({force: true})
+  console.log('connected')
+  const [user, item, order] = await Promise.all([
+    User.bulkCreate(users, {returning: true}),
+    Item.bulkCreate(items, {returning: true}),
+    Order.bulkCreate(orders, {returning: true})
+  ])
+  const [user1, user2] = user
+  const [item1, item2, item3] = item
+  const [order1, order2] = order
+  await order1.setUser(user1)
+  await order2.setUser(user2)
+  await order1.setItems([item1, item2, item3])
+  await order2.setItems([item1, item3])
+}
+
+async function runSeed() {
+  console.log('seeding...')
+  try {
+    await seed()
+  } catch (err) {
+    console.error(err)
+    process.exitCode = 1
+  } finally {
+    console.log('closing db connection')
+    await db.close()
+    console.log('db connection closed')
+  }
+}
+
+if (module === require.main) {
+  runSeed()
+}
+
+module.exports = seed
