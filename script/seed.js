@@ -288,6 +288,8 @@ db
     const [item1, item2, item3] = items
     const [order1, order2] = orders
     return Promise.all([
+      order1.setUser(user1),
+      order2.setUser(user2),
       order1.setItems([item1, item2, item3]),
       order2.setItems([item1, item3])
     ])
