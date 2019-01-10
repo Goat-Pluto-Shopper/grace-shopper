@@ -3,6 +3,7 @@ import {withRouter} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {fetchAllItems} from '../store/item'
 import {Link} from 'react-router-dom'
+import ListItems from './ListItems'
 
 class AllItems extends Component {
   async componentDidMount() {
@@ -15,18 +16,7 @@ class AllItems extends Component {
     return (
       <div>
         {allGames.map(game => {
-          return (
-            <div className="game" key={game.id}>
-              <Link to={`/game/${game.id}`}>
-                <img src={game.imageUrl} />
-              </Link>
-              <Link to={`/game/${game.id}`}>
-                <h3>{game.name}</h3>
-              </Link>
-              {/* change this to decimal!!! */}
-              <p>CHANGE ME TO DECIMAL{game.price}</p>
-            </div>
-          )
+          return <ListItems game={game} key={game.id} />
         })}
       </div>
     )
