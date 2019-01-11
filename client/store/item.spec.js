@@ -64,9 +64,11 @@ describe('thunk creators', () => {
 
     it('filters multiple query params', async () => {
       mockAxios.onGet('/api/games').replyOnce(200, fakeItems)
-      await store.dispatch(fetchAllItems({category: 'card', ageRange: '12+'}))
+      await store.dispatch(
+        fetchAllItems({category: ['card', 'board'], ageRange: '12+'})
+      )
       const actions = store.getActions()
-      expect(actions[0].items.length).to.be.deep.equal(1)
+      expect(actions[0].items.length).to.be.deep.equal(2)
     })
   })
 

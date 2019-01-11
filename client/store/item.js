@@ -49,18 +49,8 @@ export const fetchAllItems = query => async dispatch => {
   try {
     let {data} = await axios.get('/api/games')
     if (query) {
-      if (query.category) {
-        data = data.filter(x => {
-          if (x.category) {
-            return query.category.includes(x.category)
-          }
-        })
-      }
-      if (query.ageRange) {
-        data = data.filter(x => query.ageRange.includes(x.ageRange))
-      }
-      if (query.tags) {
-        data = data.filter(x => query.tags.includes(x.tags))
+      for (let key in query) {
+        data = data.filter(x => query[key].includes(x[key]))
       }
     }
     dispatch(getAllItems(data || itemState.allItems))
