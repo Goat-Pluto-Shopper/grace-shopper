@@ -1,7 +1,7 @@
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import React, {Component} from 'react'
-import {fetchCart, getCartItems} from '../store/cart'
+// import {fetchCart, getCartItems} from '../store/cart'
 import {loadState, saveState} from '../store/localStorage'
 
 // const fakeItems = [
@@ -83,11 +83,12 @@ const mapStateToProps = state => ({
   cart: state.cart
 })
 
-const mapDispatchToProps = dispatch => ({
-  // fetchCart
-  getCartItems: items => dispatch(getCartItems(items))
-})
+// const mapDispatchToProps = dispatch => ({
+//   getCartItems: items => dispatch(getCartItems(items))
+// })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Cart)
+// export default connect(mapStateToProps, mapDispatchToProps)(Cart)
+
+export default connect(mapStateToProps)(Cart)
 
 // export default Cart
