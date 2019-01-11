@@ -31,7 +31,8 @@ class Routes extends Component {
         <Route exact path="/" component={AllItems} />
         <Route path="/login" component={LogInForm} />
         <Route path="/signup" component={SignUpForm} />
-        <Route path="/board" component={SingleItem} />
+        <Route path="/board" component={AllItems} />
+        <Route path="/card" component={AllItems} />
         <Route path="/game/:id" component={SingleItem} />
         <Route path="/cart" component={Cart} />
         {isLoggedIn && (

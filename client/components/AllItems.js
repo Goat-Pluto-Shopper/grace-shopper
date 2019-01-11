@@ -11,8 +11,14 @@ class AllItems extends Component {
   }
 
   render() {
-    const allGames = this.props.allItems
-
+    let allGames = this.props.allItems
+    if (this.props.match.path === '/board') {
+      allGames = allGames.filter(x => x.category === 'board')
+    }
+    if (this.props.match.path === '/card') {
+      allGames = allGames.filter(x => x.category === 'card')
+    }
+    console.log(allGames.length, 'length')
     return (
       <div>
         {allGames.map(game => {
