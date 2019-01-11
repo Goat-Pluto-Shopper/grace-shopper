@@ -1,9 +1,9 @@
 import axios from 'axios'
 
-const GET_CART_ITEMS = 'GET_CART_ITEMS'
-const ADD_TO_CART = 'ADD_TO_CART'
-const REMOVE_FROM_CART = 'REMOVE_FROM_CART'
-const UPDATE_ITEM_QUANTITY = 'UPDATE_ITEM_QUANTITY'
+export const GET_CART_ITEMS = 'GET_CART_ITEMS'
+export const ADD_TO_CART = 'ADD_TO_CART'
+export const REMOVE_FROM_CART = 'REMOVE_FROM_CART'
+export const UPDATE_ITEM_QUANTITY = 'UPDATE_ITEM_QUANTITY'
 
 //initial state
 // {
@@ -11,10 +11,10 @@ const UPDATE_ITEM_QUANTITY = 'UPDATE_ITEM_QUANTITY'
 // }
 
 //action creators
-export const getCartItems = items => ({
-  type: GET_CART_ITEMS,
-  payload: items
-})
+// export const getCartItems = items => ({
+//   type: GET_CART_ITEMS,
+//   payload: items
+// })
 
 export const addToCart = item => {
   return {
@@ -23,35 +23,35 @@ export const addToCart = item => {
   }
 }
 
-const removeCartItem = item => ({
+export const removeCartItem = item => ({
   type: REMOVE_FROM_CART,
   payload: item
 })
 
-const updateItemQuantity = item => ({
+export const updateItemQuantity = item => ({
   type: UPDATE_ITEM_QUANTITY,
   payload: item
 })
 
 //get this from local storage!!
-export const fetchCart = () => async dispatch => {
-  try {
-    const {data: cart} = await axios.get('/api/cart')
-    dispatch(getCartItems(cart))
-  } catch (err) {
-    console.error(err)
-  }
-}
+// export const fetchCart = () => async dispatch => {
+//   try {
+//     const {data: cart} = await axios.get('/api/cart')
+//     dispatch(getCartItems(cart))
+//   } catch (err) {
+//     console.error(err)
+//   }
+// }
 
 //add to local storage!!
-export const addCartItem = item => async dispatch => {
-  try {
-    const {data: addedItem} = await axios.post(`api/items`, item)
-    dispatch(addToCart(addedItem))
-  } catch (err) {
-    console.error(err)
-  }
-}
+// export const addCartItem = item => async dispatch => {
+//   try {
+//     const {data: addedItem} = await axios.post(`api/items`, item)
+//     dispatch(addToCart(addedItem))
+//   } catch (err) {
+//     console.error(err)
+//   }
+// }
 
 // export const deleteCartItem = item => async dispatch => {
 //   try {
@@ -63,17 +63,17 @@ export const addCartItem = item => async dispatch => {
 // }
 
 //NOT SURE ABOUT THIS ONE
-export const updateCart = item => async dispatch => {
-  try {
-    const {data: updatedCart} = await axios.put(
-      `/api/cart/${item.id}/${req.query}`,
-      item
-    ) //????? update num
-    dispatch(updateItemQuantity(updatedCart))
-  } catch (err) {
-    next(err)
-  }
-}
+// export const updateCart = item => async dispatch => {
+//   try {
+//     const {data: updatedCart} = await axios.put(
+//       `/api/cart/${item.id}/${req.query}`,
+//       item
+//     ) //????? update num
+//     dispatch(updateItemQuantity(updatedCart))
+//   } catch (err) {
+//     next(err)
+//   }
+// }
 
 // REDUCER HELPER FUNCTIONS
 
@@ -98,8 +98,8 @@ const getItemIndex = (cart, id) => {
 //Reducer
 export default function cartReducer(cart = [], action) {
   switch (action.type) {
-    case GET_CART_ITEMS:
-      return [action.payload]
+    // case GET_CART_ITEMS:
+    //   return [action.payload]
     case ADD_TO_CART:
       //if item is already in the cart, increase cartQuantity on that item without re-adding the item
       if (itemAlreadyInCart(cart, action.item.id)) {
@@ -112,8 +112,8 @@ export default function cartReducer(cart = [], action) {
         action.item.cartQuantity = 1
         return [...cart, action.item]
       }
-    case REMOVE_FROM_CART:
-      return [...cart.filter(item => item.id !== action.payload)]
+    // case REMOVE_FROM_CART:
+    //   return [...cart.filter(item => item.id !== action.payload)]
     //NOT SURE ABOUT THIS ONE
     // case UPDATE_ITEM_QUANTITY:
     //   return cart.map(item => {
