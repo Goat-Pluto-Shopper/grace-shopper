@@ -1,0 +1,4 @@
+.quantityBlock {
+  display: flex;
+  flex-direction: row;
+}

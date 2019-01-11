@@ -5,12 +5,27 @@ import {composeWithDevTools} from 'redux-devtools-extension'
 import user from './user'
 import item from './item'
 import sideBarToggle from './sideBarToggle'
+import cart from './cart'
+import {throttle} from 'lodash'
 
-const reducer = combineReducers({user, item, sideBarToggle})
+// incorporate local storage here too!
+import {loadState, saveState} from './localStorage'
+
+const persistedState = loadState()
+
+const reducer = combineReducers({user, item, sideBarToggle, cart})
 const middleware = composeWithDevTools(
   applyMiddleware(thunkMiddleware, createLogger({collapsed: true}))
 )
-const store = createStore(reducer, middleware)
+const store = createStore(reducer, persistedState, middleware)
+
+store.subscribe(
+  throttle(() => {
+    saveState({
+      cart: store.getState().cart || []
+    })
+  }, 1000)
+)
 
 export default store
 export * from './user'

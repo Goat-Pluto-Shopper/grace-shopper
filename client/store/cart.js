@@ -2,19 +2,26 @@ import axios from 'axios'
 
 const GET_CART_ITEMS = 'GET_CART_ITEMS'
 const ADD_TO_CART = 'ADD_TO_CART'
-// const REMOVE_FROM_CART = 'REMOVE_FROM_CART'
+const REMOVE_FROM_CART = 'REMOVE_FROM_CART'
 const UPDATE_ITEM_QUANTITY = 'UPDATE_ITEM_QUANTITY'
 
+//initial state
+// {
+//   cart: []
+// }
+
 //action creators
-const getCartItems = items => ({
+export const getCartItems = items => ({
   type: GET_CART_ITEMS,
   payload: items
 })
 
-const addToCart = item => ({
-  type: ADD_TO_CART,
-  payload: item
-})
+export const addToCart = item => {
+  return {
+    type: ADD_TO_CART,
+    item
+  }
+}
 
 const removeCartItem = item => ({
   type: REMOVE_FROM_CART,
@@ -68,23 +75,53 @@ export const updateCart = item => async dispatch => {
   }
 }
 
+// REDUCER HELPER FUNCTIONS
+
+// helper function to test if cart includes item by id
+const itemAlreadyInCart = (cart, id) => {
+  let result = false
+  cart.forEach(item => {
+    if (item.id === id) result = true
+  })
+  return result
+}
+
+// helper function to get index of item in cart by id
+const getItemIndex = (cart, id) => {
+  let idx
+  cart.forEach((item, index) => {
+    if (item.id === id) idx = index
+  })
+  return idx
+}
+
 //Reducer
 export default function cartReducer(cart = [], action) {
   switch (action.type) {
     case GET_CART_ITEMS:
-      return action.payload
+      return [action.payload]
     case ADD_TO_CART:
-      return [...cart, action.payload]
+      //if item is already in the cart, increase cartQuantity on that item without re-adding the item
+      if (itemAlreadyInCart(cart, action.item.id)) {
+        const cartCopy = [...cart]
+        let idx = getItemIndex(cartCopy, action.item.id)
+        cartCopy[idx].cartQuantity++
+        return cartCopy
+      } else {
+        //if item is not in the cart, add a cartQuantity property to the item and set it to 1
+        action.item.cartQuantity = 1
+        return [...cart, action.item]
+      }
     case REMOVE_FROM_CART:
       return [...cart.filter(item => item.id !== action.payload)]
     //NOT SURE ABOUT THIS ONE
-    case UPDATE_ITEM_QUANTITY:
-      return cart.map(item => {
-        if (item !== item.payload) {
-          return cart
-        }
-        return [...cart]
-      })
+    // case UPDATE_ITEM_QUANTITY:
+    //   return cart.map(item => {
+    //     if (item !== item.payload) {
+    //       return cart
+    //     }
+    //     return [...cart]
+    //   })
     default:
       return cart
   }
