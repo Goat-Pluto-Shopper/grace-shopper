@@ -4,6 +4,7 @@
 @import './footer.css';
 @import './singleItem.css';
 @import './main.css';
+@import './cart.css';
 
 :root {
   --primary: #cda36c;
