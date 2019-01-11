@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom'
 import React, {Component} from 'react'
 // import {fetchCart, getCartItems} from '../store/cart'
 import {loadState, saveState} from '../store/localStorage'
+import Button from '@material-ui/core/Button'
 
 // const fakeItems = [
 //   {
@@ -62,7 +63,10 @@ class Cart extends Component {
 
         <div className="cartRight">
           total
-          <button type="checkout">CHECKOUT</button>
+          <Button variant="contained" color="primary" type="checkout">
+            CHECKOUT
+          </Button>
+          {/* <button type="checkout">CHECKOUT</button> */}
         </div>
       </div>
     )

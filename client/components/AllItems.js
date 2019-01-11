@@ -4,6 +4,9 @@ import {connect} from 'react-redux'
 import {fetchAllItems} from '../store/item'
 import {Link} from 'react-router-dom'
 import ListItems from './ListItems'
+// material ui imports
+import Paper from '@material-ui/core/Paper'
+import Grid from '@material-ui/core/Grid'
 
 class AllItems extends Component {
   async componentDidMount() {
@@ -14,11 +17,15 @@ class AllItems extends Component {
     const allGames = this.props.allItems
 
     return (
-      <div>
+      <Grid container spacing={24}>
         {allGames.map(game => {
-          return <ListItems game={game} key={game.id} />
+          return (
+            <Grid item xs={12} sm={4} key={game.id}>
+              <ListItems game={game} />
+            </Grid>
+          )
         })}
-      </div>
+      </Grid>
     )
   }
 }
