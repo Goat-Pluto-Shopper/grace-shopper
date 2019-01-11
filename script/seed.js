@@ -276,9 +276,9 @@ const seed = async () => {
   await db.sync({force: true})
   console.log('connected')
   const [user, item, order] = await Promise.all([
-    User.bulkCreate(users, {returning: true}),
-    Item.bulkCreate(items, {returning: true}),
-    Order.bulkCreate(orders, {returning: true})
+    User.bulkCreate(users, {returning: true, individualHooks: true}),
+    Item.bulkCreate(items, {returning: true, individualHooks: true}),
+    Order.bulkCreate(orders, {returning: true, individualHooks: true})
   ])
   const [user1, user2] = user
   const [item1, item2, item3] = item
