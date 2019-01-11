@@ -2,10 +2,12 @@ import React, {Component} from 'react'
 import {withRouter} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {fetchToggle} from '../store/sideBarToggle'
+import {getPastItems} from '../store/orderHistory'
 
 class UserProfile extends Component {
   async componentDidMount() {
     await this.props.fetchToggle(false)
+    await this.props.getPastItems(this.props.user.id)
   }
 
   componentWillUnmount() {
@@ -14,6 +16,7 @@ class UserProfile extends Component {
 
   render() {
     const {user} = this.props
+    console.log(this.props)
     return (
       <div>
         <div>
@@ -36,7 +39,8 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  fetchToggle: state => dispatch(fetchToggle(state))
+  fetchToggle: state => dispatch(fetchToggle(state)),
+  getPastItems: userId => dispatch(getPastItems(userId))
 })
 
 export default withRouter(
