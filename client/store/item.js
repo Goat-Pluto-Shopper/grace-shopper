@@ -48,6 +48,7 @@ const getQueryItems = items => ({
 export const fetchAllItems = query => async dispatch => {
   try {
     let {data} = await axios.get('/api/games')
+    console.log(query, 'query for board')
     if (query) {
       for (let key in query) {
         data = data.filter(x => query[key].includes(x[key]))

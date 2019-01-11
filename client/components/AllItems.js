@@ -16,6 +16,18 @@ class AllItems extends Component {
     }
   }
 
+  async componentDidUpdate(prevProps, prevState) {
+    if (prevProps.match.path !== this.props.match.path) {
+      if (this.props.match.path === '/board') {
+        await this.props.fetchAllItems({category: 'board'})
+      } else if (this.props.match.path === '/card') {
+        await this.props.fetchAllItems({category: 'card'})
+      } else {
+        await this.props.fetchAllItems()
+      }
+    }
+  }
+
   render() {
     let allGames = this.props.allItems
     console.log(allGames.length, 'all games length')
@@ -34,7 +46,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  fetchAllItems: () => dispatch(fetchAllItems())
+  fetchAllItems: query => dispatch(fetchAllItems(query))
 })
 
 export default withRouter(
