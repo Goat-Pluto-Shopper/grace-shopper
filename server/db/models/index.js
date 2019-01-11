@@ -8,9 +8,6 @@ Order.belongsTo(User)
 User.hasMany(Order)
 Item.belongsToMany(Order, {through: 'orderedItems'})
 Order.belongsToMany(Item, {through: 'orderedItems'})
-// Cart associates user w/items
-// Item.belongsToMany(User, {through: 'cart'})
-// User.belongsToMany(Item, {through: 'cart'})
 
 /**
  * If we had any associations to make, this would be a great place to put them!

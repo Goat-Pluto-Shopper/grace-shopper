@@ -7,7 +7,8 @@ import {
   SignUpForm,
   AllItems,
   NotFound,
-  SingleItem
+  SingleItem,
+  UserProfile
 } from './components'
 import {me} from './store'
 import singleItem from './components/singleItem'
@@ -35,7 +36,7 @@ class Routes extends Component {
           <Switch>
             {/* Routes placed here are only available after logging in */}
             {/* redirects here after login might need to change that especially if checking out*/}
-            <Route path="/home" component={AllItems} />
+            <Route path="/profile" component={UserProfile} />
           </Switch>
         )}
         {/* Displays store homepage (all items view) regarless of whether user is logged in. */}
