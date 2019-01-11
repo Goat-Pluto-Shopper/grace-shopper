@@ -28,26 +28,45 @@ describe('thunk creators', () => {
   })
 
   describe('fetchAllItems', () => {
+    const fakeItems = [
+      {
+        name: 'Uno',
+        price: 10.28,
+        category: 'card',
+        ageRange: '12+'
+      },
+      {
+        name: 'Avalon',
+        price: 19.99,
+        category: 'board'
+      },
+      {
+        name: 'Risk',
+        price: 19.97,
+        category: 'board',
+        ageRange: '12+'
+      }
+    ]
     it('eventually dispatches the GET_ALL_ITEMS action', async () => {
-      const fakeItems = [
-        {
-          name: 'Uno',
-          price: 10.28
-        },
-        {
-          name: 'Avalon',
-          price: 19.99
-        },
-        {
-          name: 'Risk',
-          price: 19.97
-        }
-      ]
       mockAxios.onGet('/api/games').replyOnce(200, fakeItems)
       await store.dispatch(fetchAllItems())
       const actions = store.getActions()
       expect(actions[0].type).to.be.equal('GET_ALL_ITEMS')
       expect(actions[0].items).to.be.deep.equal(fakeItems)
+    })
+
+    it('filters the data if there is query', async () => {
+      mockAxios.onGet('/api/games').replyOnce(200, fakeItems)
+      await store.dispatch(fetchAllItems({category: 'board'}))
+      const actions = store.getActions()
+      expect(actions[0].items.length).to.be.deep.equal(2)
+    })
+
+    it('filters multiple query params', async () => {
+      mockAxios.onGet('/api/games').replyOnce(200, fakeItems)
+      await store.dispatch(fetchAllItems({category: 'card', ageRange: '12+'}))
+      const actions = store.getActions()
+      expect(actions[0].items.length).to.be.deep.equal(1)
     })
   })
 

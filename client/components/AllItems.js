@@ -7,18 +7,18 @@ import ListItems from './ListItems'
 
 class AllItems extends Component {
   async componentDidMount() {
-    await this.props.fetchAllItems()
+    if (this.props.match.path === '/board') {
+      await this.props.fetchAllItems({category: 'board'})
+    } else if (this.props.match.path === '/card') {
+      await this.props.fetchAllItems({category: 'card'})
+    } else {
+      await this.props.fetchAllItems()
+    }
   }
 
   render() {
     let allGames = this.props.allItems
-    if (this.props.match.path === '/board') {
-      allGames = allGames.filter(x => x.category === 'board')
-    }
-    if (this.props.match.path === '/card') {
-      allGames = allGames.filter(x => x.category === 'card')
-    }
-    console.log(allGames.length, 'length')
+    console.log(allGames.length, 'all games length')
     return (
       <div>
         {allGames.map(game => {

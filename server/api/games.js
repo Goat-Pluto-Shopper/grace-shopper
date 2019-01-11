@@ -1,12 +1,45 @@
 const router = require('express').Router()
 const {Item} = require('../db/models')
 
-// GET all games
+// GET all games unless there is a search!
 // http://localhost:8080/api/games
 router.get('/', async (req, res, next) => {
   try {
-    const games = await Item.findAll()
+    // if (req.query) {
+    let games = await Item.findAll()
+    //test ask marie for sql
+    // if (req.query.category) {
+    //   games = games.findAll({
+    //     where: {
+    //       category: {
+    //         $contains: req.query.category
+    //       }
+    //     }
+    //   })
+    // }
+    // if (req.query.ageRange) {
+    //   games = games.findAll({
+    //     where: {
+    //       ageRange: {
+    //         $contains: req.query.ageRange
+    //       }
+    //     }
+    //   })
+    // }
+    // if (req.query.tags) {
+    //   games = games.findAll({
+    //     where: {
+    //       tags: {
+    //         $contains: req.query.tags
+    //       }
+    //     }
+    //   })
+    // }
+    // console.log(games.length);
     res.json(games)
+    // }
+    // const games = await Item.findAll()
+    // res.json(games)
   } catch (err) {
     next(err)
   }

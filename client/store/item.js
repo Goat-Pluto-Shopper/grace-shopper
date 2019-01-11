@@ -7,6 +7,7 @@ import history from '../history'
 const GET_ALL_ITEMS = 'GET_ALL_ITEMS'
 const GET_SINGLE_ITEM = 'GET_SINGLE_ITEM'
 const GET_RELATED_ITEMS = 'GET_RELATED_ITEMS'
+const GET_QUERY_ITEMS = 'GET_QUERY_ITEMS'
 
 /**
  * INITIAL STATE
@@ -35,14 +36,34 @@ const getRelatedItems = items => ({
   items
 })
 
+const getQueryItems = items => ({
+  type: GET_QUERY_ITEMS,
+  items
+})
+
 /**
  * THUNK CREATORS
  */
 
-export const fetchAllItems = () => async dispatch => {
+export const fetchAllItems = query => async dispatch => {
   try {
-    const res = await axios.get('/api/games')
-    dispatch(getAllItems(res.data || itemState.allItems))
+    let {data} = await axios.get('/api/games')
+    if (query) {
+      if (query.category) {
+        data = data.filter(x => {
+          if (x.category) {
+            return query.category.includes(x.category)
+          }
+        })
+      }
+      if (query.ageRange) {
+        data = data.filter(x => query.ageRange.includes(x.ageRange))
+      }
+      if (query.tags) {
+        data = data.filter(x => query.tags.includes(x.tags))
+      }
+    }
+    dispatch(getAllItems(data || itemState.allItems))
   } catch (err) {
     console.error(err)
   }
@@ -65,6 +86,15 @@ export const fetchRelatedItems = id => async dispatch => {
     console.error(err)
   }
 }
+
+// export const fetchQueryItems = query => async dispatch => {
+//   try{
+//     const res = await axios.get(`/`)
+//   }
+//   catch(err){
+//     console.error(err)
+//   }
+// }
 
 /**
  * REDUCER
