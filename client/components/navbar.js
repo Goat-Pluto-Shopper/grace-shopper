@@ -42,7 +42,10 @@ const Navbar = props => {
             <span className="nav-login">Login</span>
           </Link>
         )}
-        <i className="fas fa-shopping-cart" />
+        <Link to="/cart">
+          <i className="fas fa-shopping-cart" />
+          {props.cart.length > 0 && props.cart.length}
+        </Link>
       </div>
     </nav>
   )
@@ -54,7 +57,8 @@ const Navbar = props => {
 const mapState = state => {
   return {
     isLoggedIn: !!state.user.id,
-    user: state.user
+    user: state.user,
+    cart: state.cart
   }
 }
 
