@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 import {fetchAllItems} from '../store/item'
 import {Link} from 'react-router-dom'
 import ListItems from './ListItems'
+import queryString from 'query-string'
 
 class AllItems extends Component {
   async componentDidMount() {
@@ -11,6 +12,9 @@ class AllItems extends Component {
       await this.props.fetchAllItems({category: 'board'})
     } else if (this.props.match.path === '/card') {
       await this.props.fetchAllItems({category: 'card'})
+    } else if (this.props.location.search.length) {
+      let parse = queryString.parse(this.props.location.search)
+      await this.props.fetchAllItems(parse)
     } else {
       await this.props.fetchAllItems()
     }
@@ -30,7 +34,7 @@ class AllItems extends Component {
 
   render() {
     let allGames = this.props.allItems
-    console.log(allGames.length, 'all games length')
+    console.log(this.props, 'props')
     return (
       <div>
         {allGames.map(game => {
