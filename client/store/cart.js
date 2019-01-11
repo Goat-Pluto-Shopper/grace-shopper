@@ -75,15 +75,40 @@ export const updateCart = item => async dispatch => {
   }
 }
 
+// REDUCER HELPER FUNCTIONS
+
+// helper function to test if cart includes item by id
+const itemAlreadyInCart = (cart, id) => {
+  let result = false
+  cart.forEach(item => {
+    if (item.id === id) result = true
+  })
+  return result
+}
+
+// helper function to get index of item in cart by id
+const getItemIndex = (cart, id) => {
+  let idx
+  cart.forEach((item, index) => {
+    if (item.id === id) idx = index
+  })
+  return idx
+}
+
 //Reducer
 export default function cartReducer(cart = [], action) {
   switch (action.type) {
     case GET_CART_ITEMS:
       return [action.payload]
     case ADD_TO_CART:
-      if (cart.includes(action.item.id)) {
-        return [...cart, action.item.cartQuantity++]
+      //if item is already in the cart, increase cartQuantity on that item without re-adding the item
+      if (itemAlreadyInCart(cart, action.item.id)) {
+        const cartCopy = [...cart]
+        let idx = getItemIndex(cartCopy, action.item.id)
+        cartCopy[idx].cartQuantity++
+        return cartCopy
       } else {
+        //if item is not in the cart, add a cartQuantity property to the item and set it to 1
         action.item.cartQuantity = 1
         return [...cart, action.item]
       }
