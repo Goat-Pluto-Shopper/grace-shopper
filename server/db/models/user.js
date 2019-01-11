@@ -80,3 +80,5 @@ const setSaltAndPassword = user => {
 
 User.beforeCreate(setSaltAndPassword)
 User.beforeUpdate(setSaltAndPassword)
+// User.beforeBulkCreate()
+// User.beforeBulkUpdate(setSaltAndPassword)
