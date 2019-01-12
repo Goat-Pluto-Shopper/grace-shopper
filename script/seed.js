@@ -27,12 +27,14 @@ const items = [
     imageUrl:
       'https://images-na.ssl-images-amazon.com/images/I/71ooTJfPLPL._SL1159_.jpg',
     category: 'board',
-    ageRange: '12+'
+    ageRange: '12+',
+    tags: ['board']
   },
   {
     name: 'Uno',
     price: 1028,
-    category: 'card'
+    category: 'card',
+    tags: ['card']
   },
   {
     name: 'Risk',

@@ -5,6 +5,7 @@ import {Router} from 'react-router-dom'
 import history from './history'
 import store from './store'
 import App from './app'
+import {Elements, StripeProvider} from 'react-stripe-elements'
 
 //importating css
 import './styles/index.css'
@@ -14,9 +15,13 @@ import './socket'
 
 ReactDOM.render(
   <Provider store={store}>
-    <Router history={history}>
-      <App />
-    </Router>
+    <StripeProvider apiKey="pk_test_H5r5gVCevsEbSRPcy3BUjb1e">
+      <Elements>
+        <Router history={history}>
+          <App />
+        </Router>
+      </Elements>
+    </StripeProvider>
   </Provider>,
   document.getElementById('app')
 )

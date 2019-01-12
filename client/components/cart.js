@@ -1,8 +1,8 @@
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import React, {Component} from 'react'
-import {fetchCart, getCartItems} from '../store/cart'
-import {loadState, saveState} from '../store/localStorage'
+import {incrementQuantity, decrementQuantity} from '../store/'
+import Button from '@material-ui/core/Button'
 
 // const fakeItems = [
 //   {
@@ -25,24 +25,23 @@ import {loadState, saveState} from '../store/localStorage'
 //   }
 // ]
 
+const totalPrice = cart =>
+  cart.reduce((total, items) => items.price * items.cartQuantity + total, 0)
+
 class Cart extends Component {
   componentDidMount() {
-    // this.props.fetchCart()
-    // this.props.getCartItems()
     // console.log('are there props on cart', this.props)
   }
 
   render() {
     const {cart} = this.props
-    console.log('props passed to cart', this.props)
-    console.log('!!!!!', cart)
-    console.log('localStorage state', JSON.parse(localStorage.getItem('state')))
+    console.log('props passed to Cart.js', this.props)
+    console.log('cart', cart)
 
     return (
       <div>
         <h1>Shopping Cart</h1>
         {/* FOR EACH ITEM */}
-
         <div className="cartLeft">
           {cart.map(item => {
             return (
@@ -51,9 +50,21 @@ class Cart extends Component {
                 <p>{item.name}</p>
                 <p>${item.price}</p>
                 <div className="quantityBlock">
-                  <button type="subtract">-</button>
+                  <button
+                    type="button"
+                    name="increment"
+                    onClick={() => this.props.decrementQuantity(item)}
+                  >
+                    -
+                  </button>
                   <p>{item.cartQuantity}</p>
-                  <button type="add">+</button>
+                  <button
+                    type="button"
+                    name="decrement"
+                    onClick={() => this.props.incrementQuantity(item)}
+                  >
+                    +
+                  </button>
                 </div>
               </div>
             )
@@ -61,17 +72,17 @@ class Cart extends Component {
         </div>
 
         <div className="cartRight">
-          total
-          <button type="checkout">CHECKOUT</button>
+          <div className="totalPrice">TOTAL: ${totalPrice(cart)}</div>
+          <Link to="/checkout">
+            <Button variant="contained" color="primary" type="checkout">
+              CHECKOUT
+            </Button>
+          </Link>
         </div>
       </div>
     )
   }
 }
-//cart will render items added by user =. will display price and quantity
-//should display total price
-//should display shipping price
-// cart should render a checkout button handled by STRIPE
 
 // const mapState = state => {
 //   return {
@@ -84,8 +95,8 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  // fetchCart
-  getCartItems: items => dispatch(getCartItems(items))
+  incrementQuantity: item => dispatch(incrementQuantity(item)),
+  decrementQuantity: item => dispatch(decrementQuantity(item))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Cart)
