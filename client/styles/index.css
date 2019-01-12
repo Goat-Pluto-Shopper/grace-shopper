@@ -35,6 +35,10 @@ p {
   font-family: 'Staatliches', cursive;
 }
 
+img {
+  width: 30%;
+}
+
 /* tablet */
 @media only screen and (min-width: 768px) {
   /* body {
