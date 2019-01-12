@@ -53,9 +53,8 @@ export const fetchAllItems = query => async dispatch => {
       for (let key in query) {
         if (key === 'tags' || key === 'ageRange' || key === 'category') {
           data = data.filter(x => {
-            const querys = query[key]
-            const something = x[key]
-            return x[key].includes(query[key])
+            // return x[key].includes(query[key])
+            return query[key].includes(x[key])
           })
         } else {
           //if they do some weird query we're just returning nothing.
