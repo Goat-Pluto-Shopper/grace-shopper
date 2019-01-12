@@ -7,7 +7,7 @@ const db = require('../db')
 Order.belongsTo(User)
 User.hasMany(Order)
 Order.belongsToMany(Item, {through: 'orderedItems'})
-Order.hasMany(Item)
+// Order.hasMany(Item)
 Item.belongsToMany(Order, {through: 'orderedItems'})
 
 /**

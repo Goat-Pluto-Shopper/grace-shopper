@@ -36,7 +36,7 @@ export const getPastItems = userId => async dispatch => {
 export default function(state = defaultOrderHisory, action) {
   switch (action.type) {
     case GET_ITEMS:
-      return action.items
+      return {...state, recentItems: action.items}
     default:
       return state
   }

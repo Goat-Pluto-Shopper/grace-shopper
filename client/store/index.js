@@ -14,7 +14,7 @@ import {loadState, saveState} from './localStorage'
 
 const persistedState = loadState()
 
-const reducer = combineReducers({user, item, sideBarToggle, cart})
+const reducer = combineReducers({user, item, sideBarToggle, cart, orderHistory})
 const middleware = composeWithDevTools(
   applyMiddleware(thunkMiddleware, createLogger({collapsed: true}))
 )
