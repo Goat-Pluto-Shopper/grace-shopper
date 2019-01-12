@@ -6,8 +6,9 @@ const db = require('../db')
 // Model Associations
 Order.belongsTo(User)
 User.hasMany(Order)
-Item.belongsToMany(Order, {through: 'orderedItems'})
 Order.belongsToMany(Item, {through: 'orderedItems'})
+Order.hasMany(Item)
+Item.belongsToMany(Order, {through: 'orderedItems'})
 
 /**
  * If we had any associations to make, this would be a great place to put them!

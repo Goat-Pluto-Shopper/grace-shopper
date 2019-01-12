@@ -27,13 +27,13 @@ router.post('/', async (req, res, next) => {
       city: cart.city,
       state: cart.state,
       zipcode: cart.zipcode,
-      userId: req.user.id
+      userId: cart.userId
       // user: cart.user,
       // items: cart.items
     })
     // create orderedItems model and insert into here at the same time
-    await order.setUser(cart.user)
-    await order.setItems([cart.items[0]])
+    // await order.setUser(cart.user)
+    // await order.setItems([cart.items[0]])
     res.json(order)
   } catch (err) {
     next(err)
