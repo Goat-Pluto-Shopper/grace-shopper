@@ -5,6 +5,9 @@ import {Link} from 'react-router-dom'
 import {logout} from '../store'
 import UserNavBar from './UserNavBar'
 
+const cartNum = cart =>
+  cart.reduce((total, items) => items.cartQuantity + total, 0)
+
 const Navbar = props => {
   return (
     <nav id="nav-top">
@@ -44,7 +47,7 @@ const Navbar = props => {
         )}
         <Link to="/cart">
           <i className="fas fa-shopping-cart" />
-          {props.cart.length > 0 && props.cart.length}
+          {cartNum(props.cart) > 0 && cartNum(props.cart)}
         </Link>
       </div>
     </nav>
