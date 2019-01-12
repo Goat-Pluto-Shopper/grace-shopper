@@ -1,7 +1,7 @@
 'use strict'
 
 const db = require('../server/db')
-const {User, Item, Order} = require('../server/db/models')
+const {User, Item, Order, OrderedItems} = require('../server/db/models')
 
 const users = [
   {
