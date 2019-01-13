@@ -21,8 +21,7 @@ class AllItems extends Component {
     } else if (this.props.match.path === '/card') {
       await this.props.fetchAllItems({category: 'card'})
     } else if (this.props.location.search.length) {
-      let parse = queryString.parse(this.props.location.search)
-      await this.props.fetchAllItems(parse)
+      await this.props.fetchAllItems(this.props.location.search)
     } else {
       await this.props.fetchAllItems()
     }
@@ -37,6 +36,8 @@ class AllItems extends Component {
         await this.props.fetchAllItems({category: 'board'})
       } else if (this.props.match.path === '/card') {
         await this.props.fetchAllItems({category: 'card'})
+      } else if (this.props.location.search.length) {
+        await this.props.fetchAllItems(this.props.location.search)
       } else {
         await this.props.fetchAllItems()
       }
