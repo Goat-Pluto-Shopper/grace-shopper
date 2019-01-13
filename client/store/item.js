@@ -47,23 +47,15 @@ const getQueryItems = items => ({
 
 export const fetchAllItems = query => async dispatch => {
   try {
-    console.log(query, 'query from fetch all')
-    let {data} = await axios.get('/api/games')
     if (query) {
-      for (let key in query) {
-        if (key === 'tags' || key === 'ageRange' || key === 'category') {
-          data = data.filter(x => {
-            // return x[key].includes(query[key])
-            return query[key].includes(x[key])
-          })
-        } else {
-          //if they do some weird query we're just returning nothing.
-          data = []
-          break
-        }
-      }
+      console.log('i hit query in item', query)
+      const {data} = await axios.get(`/api/games/${query}`)
+      dispatch(getAllItems(data || itemState.allItems))
+    } else {
+      console.log('not query')
+      const {data} = await axios.get('/api/games')
+      dispatch(getAllItems(data || itemState.allItems))
     }
-    dispatch(getAllItems(data || itemState.allItems))
   } catch (err) {
     console.error(err)
   }

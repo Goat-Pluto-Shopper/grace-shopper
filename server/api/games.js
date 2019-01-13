@@ -1,12 +1,28 @@
 const router = require('express').Router()
 const {Item} = require('../db/models')
+const db = require('../db/db')
 
 // GET all games unless there is a search!
 // http://localhost:8080/api/games
 router.get('/', async (req, res, next) => {
   try {
-    let games = await Item.findAll()
-    res.json(games)
+    if (Object.keys(req.query).length !== 0) {
+      let games = await db.query(
+        'SELECT * from items where (:category is null or items.category = :category) ',
+        {
+          replacements: {
+            category: req.body.category
+          },
+          type: db.QueryTypes.SELECT
+        }
+      )
+      console.log(games, 'games from server')
+      res.json(games)
+    } else {
+      console.log('i did not hit query server')
+      let games = await Item.findAll()
+      res.json(games)
+    }
   } catch (err) {
     next(err)
   }

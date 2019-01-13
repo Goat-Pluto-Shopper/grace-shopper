@@ -26,19 +26,12 @@ class SideBar extends React.Component {
     }
     await this.setState({[e.target.name]: options})
     const query = queryString.stringify(this.state)
-    const obj = queryString.parse(query)
-    console.log(query, 'query')
     this.props.history.push({
       pathname: '/',
       search: query
     })
-    this.props.fetchAllItems(obj)
+    this.props.fetchAllItems(query)
   }
-
-  // history.push({
-  //   pathname: '/dresses',
-  //   search: '?color=blue'
-  // })
 
   render() {
     return (
