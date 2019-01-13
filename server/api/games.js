@@ -11,7 +11,7 @@ router.get('/', async (req, res, next) => {
         'SELECT * from items where ' +
           '((:category) is null or items.category IN (:category)) and ' +
           '((:ageRange) is null or items."ageRange" IN (:ageRange)) and ' +
-          '((:tags) is null or items.tags && cast(ARRAY[:tags] as varchar[]))',
+          '((:tags) is null or items."tags" && cast(ARRAY[:tags] as varchar[]))',
         {
           replacements: {
             category: !req.query.category ? null : req.query.category,
