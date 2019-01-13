@@ -8,15 +8,19 @@ router.get('/', async (req, res, next) => {
   try {
     if (Object.keys(req.query).length !== 0) {
       let games = await db.query(
-        'SELECT * from items where (:category is null or items.category = :category) ',
+        'SELECT * from items where ' +
+          '((:category) is null or items.category IN (:category)) and ' +
+          '((:ageRange) is null or items."ageRange" IN (:ageRange)) and ' +
+          '((:tags) is null or items.tags && cast(ARRAY[:tags] as varchar[]))',
         {
           replacements: {
-            category: req.body.category
+            category: !req.query.category ? null : req.query.category,
+            ageRange: !req.query.ageRange ? null : req.query.ageRange,
+            tags: !req.query.tags ? null : req.query.tags
           },
           type: db.QueryTypes.SELECT
         }
       )
-      console.log(games, 'games from server')
       res.json(games)
     } else {
       console.log('i did not hit query server')
