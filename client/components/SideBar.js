@@ -30,7 +30,7 @@ class SideBar extends React.Component {
       pathname: '/',
       search: query
     })
-    this.props.fetchAllItems(query)
+    // this.props.fetchAllItems(query)
   }
 
   render() {
