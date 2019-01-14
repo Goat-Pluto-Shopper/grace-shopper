@@ -5,12 +5,23 @@ const {v4} = require('node-uuid').v4()
 // GET /api/orders/userId - user's past items
 router.get('/:userId', async (req, res, next) => {
   try {
-    const orders = await Order.findAll({
-      where: {userId: req.params.userId},
-      include: [{model: Item}],
-      order: [['id', 'DESC']]
-    })
-    res.json(orders[0].items)
+    if (req.session.user === parseInt(req.params.userId)) {
+      // userid needs to be in the request body
+      const orders = await Order.findAll({
+        where: {userId: req.params.userId},
+        include: [{model: Item}],
+        order: [['id', 'DESC']]
+      })
+      res.json(orders[0].items)
+      console.log(
+        req.session.user,
+        'req session user',
+        req.params.userId,
+        'params'
+      )
+    } else {
+      res.status(403).end()
+    }
   } catch (err) {
     next(err)
   }
