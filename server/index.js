@@ -10,7 +10,6 @@ const sessionStore = new SequelizeStore({db})
 const PORT = process.env.PORT || 8080
 const app = express()
 const socketio = require('socket.io')
-const stripe = require('stripe')(process.env.SECRETS_SK)
 
 module.exports = app
 
@@ -29,6 +28,7 @@ if (process.env.NODE_ENV === 'test') {
  * Node process on process.env
  */
 if (process.env.NODE_ENV !== 'production') require('../secrets')
+const stripe = require('stripe')(process.env.STRIPE_SK)
 
 // passport registration
 passport.serializeUser((user, done) => done(null, user.id))
@@ -75,6 +75,7 @@ const createApp = () => {
 
   // charge route - export this later
   app.post('/charge', async (req, res) => {
+    console.log('req.body', req.body)
     try {
       let {status} = await stripe.charges.create({
         amount: 2000,
@@ -85,6 +86,7 @@ const createApp = () => {
 
       res.json({status})
     } catch (err) {
+      console.log(err)
       res.status(500).end()
     }
   })
