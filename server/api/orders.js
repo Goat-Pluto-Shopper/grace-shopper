@@ -22,7 +22,7 @@ router.post('/', async (req, res, next) => {
     // get cart items from cart redux store
     // get user info from checkout form
     const checkoutInfo = req.body
-    console.log('REQ BODY HERE', checkoutInfo)
+    // console.log('REQ BODY HERE', checkoutInfo)
     const order = await Order.create({
       total: checkoutInfo.total,
       streetAddress: checkoutInfo.streetAddress,
@@ -32,11 +32,13 @@ router.post('/', async (req, res, next) => {
       userId: checkoutInfo.userId
     })
 
-    console.log('HIIIII ORDER ID IS HERE ----------', order.id)
+    // console.log('HIIIII ORDER ID IS HERE ----------', order.id)
     // loop over cart items
 
     const cart = checkoutInfo.cart
     // console.log('CART!!!---------', cart)
+
+    // loop over cart items
     for (let i = 0; i < cart.length; i++) {
       //creates one row in OrderedItems table for each item
       let orderedItem = await OrderedItems.create({
