@@ -13,8 +13,7 @@ router.get('/', async (req, res, next) => {
       })
       res.json(users)
     } else {
-      console.log('i did not have the right auth')
-      next()
+      res.status(403).end()
     }
   } catch (err) {
     next(err)
