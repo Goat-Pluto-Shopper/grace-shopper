@@ -42,6 +42,7 @@ export const submitCart = cart => ({
 //this goes in checkoutForm.js
 export const postCart = cartInfo => async dispatch => {
   try {
+    console.log('HI THUNK IS WORKING', cartInfo)
     const res = await axios.post('/api/orders', {
       total: cartInfo.total,
       streetAddress: cartInfo.streetAddress,
@@ -81,6 +82,8 @@ const getItemIndex = (cart, id) => {
 export default function cartReducer(cart = [], action) {
   const cartCopy = [...cart]
   switch (action.type) {
+    case SUBMIT_CART_TO_SERVER:
+      return []
     case ADD_TO_CART:
       //if item is already in the cart, increase cartQuantity on that item without re-adding the item
       if (itemAlreadyInCart(cart, action.item.id)) {

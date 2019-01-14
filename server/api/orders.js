@@ -43,7 +43,7 @@ router.post('/', async (req, res, next) => {
         price: cart[i].price,
         quantity: cart[i].quantity,
         orderId: order.id,
-        itemId: cart[i].itemId
+        itemId: cart[i].id
       })
     }
 
