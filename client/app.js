@@ -4,6 +4,7 @@ import {Navbar, Header, Footer, AllItems} from './components'
 import Routes from './routes'
 import {connect} from 'react-redux'
 import {withRouter} from 'react-router-dom'
+import {Elements, StripeProvider} from 'react-stripe-elements'
 
 const App = props => {
   return (
@@ -14,7 +15,11 @@ const App = props => {
       {/* switch happens */}
       <main>
         <div id="main-container">
-          <Routes />
+          <StripeProvider apiKey="pk_test_H5r5gVCevsEbSRPcy3BUjb1e">
+            <Elements>
+              <Routes />
+            </Elements>
+          </StripeProvider>
         </div>
         {/* <AllItems /> */}
       </main>
