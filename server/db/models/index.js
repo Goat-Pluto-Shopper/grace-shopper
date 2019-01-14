@@ -8,7 +8,7 @@ const OrderedItems = require('./orderedItems')
 Order.belongsTo(User)
 User.hasMany(Order)
 Order.belongsToMany(Item, {through: OrderedItems})
-// Order.hasMany(Item)
+Order.hasMany(Item)
 Item.belongsToMany(Order, {through: OrderedItems})
 
 /**

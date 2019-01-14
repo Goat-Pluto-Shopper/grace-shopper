@@ -1,7 +1,7 @@
 'use strict'
 
 const db = require('../server/db')
-const {User, Item, Order, OrderedItems} = require('../server/db/models')
+const {User, Item, Order} = require('../server/db/models')
 
 const users = [
   {
@@ -33,6 +33,7 @@ const items = [
   {
     name: 'Uno',
     price: 1028,
+    imageUrl: 'https://pics.drugstore.com/prodimg/227769/900.jpg',
     category: 'card',
     tags: ['card']
   },
