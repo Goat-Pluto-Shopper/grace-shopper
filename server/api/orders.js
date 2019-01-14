@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const {Order, Item} = require('../db/models')
+const {Order, Item, OrderedItems} = require('../db/models')
 
 // GET /api/orders/userId - user's past items
 router.get('/:userId', async (req, res, next) => {
@@ -19,21 +19,24 @@ router.get('/:userId', async (req, res, next) => {
 // POST /api/orders - order (on checkout)
 router.post('/', async (req, res, next) => {
   try {
-    // get cart from req.body from local storage
-    const cart = req.body
+    // get cart items from cart redux store
+    // get user info from checkout form
+    const checkoutInfo = req.body
     const order = await Order.create({
-      total: cart.total,
-      streetAddress: cart.streetAddress,
-      city: cart.city,
-      state: cart.state,
-      zipcode: cart.zipcode,
-      userId: cart.userId
-      // user: cart.user,
-      // items: cart.items
+      total: checkoutInfo.total,
+      streetAddress: checkoutInfo.streetAddress,
+      city: checkoutInfo.city,
+      state: checkoutInfo.state,
+      zipcode: checkoutInfo.zipcode,
+      userId: checkoutInfo.userId
     })
-    // create orderedItems model and insert into here at the same time
-    // await order.setUser(cart.user)
-    // await order.setItems([cart.items[0]])
+    // loop over cart items
+    const orderedItems = await OrderedItems.create({
+      orderId: checkoutInfo.orderId,
+      itemId: checkoutInfo.itemId,
+      price: checkoutInfo.price,
+      quantity: checkoutInfo.quantity
+    })
     res.json(order)
   } catch (err) {
     next(err)
