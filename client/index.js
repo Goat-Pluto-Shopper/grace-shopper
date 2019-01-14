@@ -15,13 +15,9 @@ import './socket'
 
 ReactDOM.render(
   <Provider store={store}>
-    <StripeProvider apiKey="pk_test_H5r5gVCevsEbSRPcy3BUjb1e">
-      <Elements>
-        <Router history={history}>
-          <App />
-        </Router>
-      </Elements>
-    </StripeProvider>
+    <Router history={history}>
+      <App />
+    </Router>
   </Provider>,
   document.getElementById('app')
 )
