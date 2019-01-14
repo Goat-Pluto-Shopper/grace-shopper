@@ -17,9 +17,9 @@ import SideBar from './SideBar'
 class AllItems extends Component {
   async componentDidMount() {
     if (this.props.match.path === '/board') {
-      await this.props.fetchAllItems({category: 'board'})
+      await this.props.fetchAllItems(`?category=board`)
     } else if (this.props.match.path === '/card') {
-      await this.props.fetchAllItems({category: 'card'})
+      await this.props.fetchAllItems(`?category=card`)
     } else if (this.props.location.search.length) {
       await this.props.fetchAllItems(this.props.location.search)
     } else {
@@ -33,9 +33,9 @@ class AllItems extends Component {
       prevProps.location.search !== this.props.location.search
     ) {
       if (this.props.match.path === '/board') {
-        await this.props.fetchAllItems({category: 'board'})
+        await this.props.fetchAllItems(`?category=board`)
       } else if (this.props.match.path === '/card') {
-        await this.props.fetchAllItems({category: 'card'})
+        await this.props.fetchAllItems(`?category=card`)
       } else if (this.props.location.search.length) {
         await this.props.fetchAllItems(this.props.location.search)
       } else {
