@@ -6,7 +6,7 @@ const OrderedItems = db.define('orderedItems', {
     type: Sequelize.INTEGER,
     allowNull: true
   },
-  quantity: {
+  itemQuantity: {
     type: Sequelize.INTEGER,
     defaultValue: 1
   }
