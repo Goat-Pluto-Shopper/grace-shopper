@@ -45,7 +45,7 @@ describe('Games routes', () => {
         .expect(200)
 
       expect(res.body).to.be.an('array')
-      expect(res.body.length).to.be.equal(2)
+      expect(res.body.length).to.be.equal(3)
     })
 
     it('GET /api/games/:id', async () => {
