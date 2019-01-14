@@ -29,7 +29,8 @@ const Item = db.define('item', {
     type: Sequelize.STRING
   },
   tags: {
-    type: Sequelize.ARRAY(Sequelize.STRING)
+    type: Sequelize.ARRAY(Sequelize.STRING),
+    defaultValue: []
   },
   category: {
     // board or card

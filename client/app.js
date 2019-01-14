@@ -1,6 +1,6 @@
 import React from 'react'
 
-import {Navbar, Header, Footer, AllItems, SideBar} from './components'
+import {Navbar, Header, Footer, AllItems} from './components'
 import Routes from './routes'
 import {connect} from 'react-redux'
 import {withRouter} from 'react-router-dom'
@@ -13,7 +13,6 @@ const App = props => {
       <Header />
       {/* switch happens */}
       <main>
-        {props.sideBarToggle && <SideBar />}
         <div id="main-container">
           <Routes />
         </div>
