@@ -39,5 +39,13 @@ describe('Games routes', () => {
 
       expect(res.body.name).to.be.equal('Uno')
     })
+
+    it('checks if there is query', async () => {
+      const res = await request(app)
+        .get(`/api/games/?tags=uno`)
+        .expect(200)
+
+      expect(res.body[0].name).to.be.equal('Uno')
+    })
   }) // end describe('/api/games')
 }) // end describe('Games routes')
