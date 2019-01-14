@@ -6,12 +6,26 @@ const db = require('../db')
 const app = require('../index')
 const Item = db.model('item')
 
-const fakeData = {
-  name: 'Uno',
-  price: 3.99,
-  tags: ['world domination', 'uno', 'cards'],
-  category: 'card'
-}
+const fakeData = [
+  {
+    name: 'Uno',
+    price: 3.99,
+    tags: ['world domination', 'uno', 'cards'],
+    category: 'card'
+  },
+  {
+    name: 'Liar',
+    price: 3.99,
+    tags: ['world domination', 'liar', 'board'],
+    category: 'board'
+  },
+  {
+    name: 'Liar',
+    price: 3.99,
+    tags: ['world domination', 'fun', 'board'],
+    category: 'board'
+  }
+]
 
 describe('Games routes', () => {
   beforeEach(() => {
@@ -19,8 +33,10 @@ describe('Games routes', () => {
   })
 
   describe('/api/games/', () => {
-    beforeEach(() => {
-      return Item.create(fakeData)
+    let storedItems
+    beforeEach(async () => {
+      const createdItems = await Item.bulkCreate(fakeData)
+      storedItems = createdItems.map(item => item.dataValues)
     })
 
     it('GET /api/games', async () => {
@@ -29,7 +45,7 @@ describe('Games routes', () => {
         .expect(200)
 
       expect(res.body).to.be.an('array')
-      expect(res.body[0].name).to.be.equal('Uno')
+      expect(res.body.length).to.be.equal(2)
     })
 
     it('GET /api/games/:id', async () => {
@@ -46,6 +62,14 @@ describe('Games routes', () => {
         .expect(200)
 
       expect(res.body[0].name).to.be.equal('Uno')
+    })
+
+    it('checks for multiple query', async () => {
+      const res = await request(app)
+        .get(`/api/games/?category=board&tags=fun`)
+        .expect(200)
+
+      expect(res.body.length).to.be.equal(1)
     })
   }) // end describe('/api/games')
 }) // end describe('Games routes')
