@@ -42,8 +42,7 @@ const ListItems = props => {
                 {game.name}
               </Typography>
               <Typography component="p">
-                {/* change this to decimal!!! */}
-                CHANGE ME TO DECIMAL {game.price}
+                ${(game.price / 100).toFixed(2)}
               </Typography>
             </CardContent>
           </CardActionArea>

@@ -70,9 +70,10 @@ class Cart extends Component {
             )
           })}
         </div>
-
         <div className="cartRight">
-          <div className="totalPrice">TOTAL: ${totalPrice(cart)}</div>
+          <div className="totalPrice">
+            TOTAL: ${totalPrice(cart).toFixed(2)}
+          </div>
           <Link to="/checkout">
             <Button variant="contained" color="primary" type="checkout">
               CHECKOUT
