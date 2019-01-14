@@ -8,7 +8,7 @@ const OrderedItems = require('./orderedItems')
 Order.belongsTo(User)
 User.hasMany(Order)
 Order.belongsToMany(Item, {through: OrderedItems})
-Order.hasMany(Item)
+// Order.hasMany(Item) // breaks orders route
 Item.belongsToMany(Order, {through: OrderedItems})
 
 /**
@@ -28,5 +28,6 @@ module.exports = {
   db,
   User,
   Order,
-  Item
+  Item,
+  OrderedItems
 }
