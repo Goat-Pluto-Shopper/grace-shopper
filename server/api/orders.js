@@ -1,5 +1,6 @@
 const router = require('express').Router()
-const {Order, Item, OrderedItems} = require('../db/models')
+const {User, Order, Item, OrderedItems} = require('../db/models')
+const {v4} = require('node-uuid').v4()
 
 // GET /api/orders/userId - user's past items
 router.get('/:userId', async (req, res, next) => {
@@ -22,14 +23,25 @@ router.post('/', async (req, res, next) => {
     // get cart items from cart redux store
     // get user info from checkout form
     const checkoutInfo = req.body
-    // console.log('REQ BODY HERE', checkoutInfo)
+    console.log('REQ BODY HERE', checkoutInfo)
+    if (!checkoutInfo.userId) {
+      const guestUser = await User.create({
+        firstName: checkoutInfo.firstName,
+        lastName: checkoutInfo.lastName,
+        email: checkoutInfo.email,
+        // password: v4()
+        password: 'password'
+      })
+      console.log('guestUser', guestUser)
+      checkoutInfo.userId = Number(guestUser.id)
+    }
     const order = await Order.create({
       total: checkoutInfo.total,
       streetAddress: checkoutInfo.streetAddress,
       city: checkoutInfo.city,
       state: checkoutInfo.state,
-      zipcode: checkoutInfo.zipcode,
-      userId: checkoutInfo.userId
+      zipcode: Number(checkoutInfo.zipcode),
+      userId: Number(checkoutInfo.userId)
     })
 
     // console.log('HIIIII ORDER ID IS HERE ----------', order.id)
@@ -42,10 +54,10 @@ router.post('/', async (req, res, next) => {
     for (let i = 0; i < cart.length; i++) {
       //creates one row in OrderedItems table for each item
       let orderedItem = await OrderedItems.create({
-        price: cart[i].price,
-        quantity: cart[i].quantity,
-        orderId: order.id,
-        itemId: cart[i].id
+        price: Number(cart[i].price),
+        quantity: Number(cart[i].quantity),
+        orderId: Number(order.id),
+        itemId: Number(cart[i].id)
       })
     }
 
