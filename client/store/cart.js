@@ -4,7 +4,7 @@ export const ADD_TO_CART = 'ADD_TO_CART'
 export const REMOVE_FROM_CART = 'REMOVE_FROM_CART'
 export const INCREMENT_QUANTITY = 'INCREMENT_QUANTITY'
 export const DECREMENT_QUANTITY = 'DECREMENT_QUANTITY'
-
+export const SUBMIT_CART_TO_SERVER = 'SUBMIT_CART_TO_SERVER'
 //initial state
 // {
 //   cart: []
@@ -31,6 +31,31 @@ export const decrementQuantity = item => ({
   type: DECREMENT_QUANTITY,
   item
 })
+
+export const submitCart = cart => ({
+  type: SUBMIT_CART_TO_SERVER,
+  cart
+})
+
+// THUNK CREATORS
+
+//this goes in checkoutForm.js
+export const postCart = cartInfo => async dispatch => {
+  try {
+    const res = await axios.post('/api/orders', {
+      total: cartInfo.total,
+      streetAddress: cartInfo.streetAddress,
+      city: cartInfo.city,
+      state: cartInfo.state,
+      zipcode: cartInfo.zipcode,
+      userId: cartInfo.userId, // set this in checkoutForm
+      cart: cartInfo.cart // an array
+    })
+    dispatch(submitCart(res.data))
+  } catch (err) {
+    console.error(err)
+  }
+}
 
 // REDUCER HELPER FUNCTIONS
 
