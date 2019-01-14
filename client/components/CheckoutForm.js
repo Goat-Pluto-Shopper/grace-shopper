@@ -3,21 +3,25 @@ import React, {Component} from 'react'
 import {CardElement, injectStripe} from 'react-stripe-elements'
 import {postCart} from '../store/cart'
 
+const totalPrice = cart =>
+  cart.reduce((total, items) => items.price * items.cartQuantity + total, 0)
 class CheckoutForm extends Component {
   constructor(props) {
     super(props)
     this.state = {
       complete: false,
-      firstName: 'Jane',
-      lastName: 'Doe',
-      total: 25, //get from cartstate,
-      streetAddress: '77 Winchester Lane',
-      aptNum: '1A',
-      city: 'Coachella',
-      state: 'CA',
-      zipcode: 92236
+      firstName: '',
+      lastName: '',
+      email: '',
+      total: totalPrice(this.props.cart),
+      streetAddress: '',
+      aptNum: '',
+      city: '',
+      state: '',
+      zipcode: ''
     }
     this.submit = this.submit.bind(this)
+    this.handleChange = this.handleChange.bind(this)
   }
 
   async submit(ev) {
@@ -26,8 +30,12 @@ class CheckoutForm extends Component {
 
     // SUBMIT TO THUNK
     let objToSubmit = {
+      firstName: this.state.firstName,
+      lastName: this.state.lastName,
+      email: this.state.email,
       total: this.state.total,
       streetAddress: this.state.streetAddress,
+      aptNum: this.state.aptNum,
       city: this.state.city,
       state: this.state.state,
       zipcode: this.state.zipcode,
@@ -54,6 +62,10 @@ class CheckoutForm extends Component {
     }
   }
 
+  handleChange(changeEvt) {
+    this.setState({[changeEvt.target.name]: changeEvt.target.value})
+  }
+
   render() {
     const {cart} = this.props
     // console.log('CART!!!', cart)
@@ -71,68 +83,85 @@ class CheckoutForm extends Component {
         <label>
           <span>First name</span>
           <input
-            id="first-name"
-            name="first-name"
+            id="firstName"
+            name="firstName"
             placeholder="Jane"
             value={this.state.firstName}
+            onChange={this.handleChange}
           />
         </label>
         <label>
           <span>Last name</span>
           <input
-            id="last-name"
-            name="last-name"
+            id="lastName"
+            name="lastName"
             placeholder="Doe"
             value={this.state.lastName}
+            onChange={this.handleChange}
+          />
+        </label>
+        <label>
+          <span>E-mail</span>
+          <input
+            id="email"
+            name="email"
+            placeholder="email@email.com"
+            value={this.state.email}
+            onChange={this.handleChange}
           />
         </label>
         <label>
           <span>Street Address</span>
           <input
-            id="address-line1"
-            name="address_line1"
+            id="streetAddress"
+            name="streetAddress"
             placeholder="77 Winchester Lane"
             value={this.state.streetAddress}
+            onChange={this.handleChange}
           />
         </label>
         <label>
           <span>Apt Number</span>
           <input
-            id="apt-num"
-            name="apt-num"
+            id="aptNum"
+            name="aptNum"
             placeholder="1A"
             value={this.state.aptNum}
+            onChange={this.handleChange}
           />
         </label>
         <label>
           <span>City</span>
           <input
-            id="address-city"
-            name="address_city"
+            id="city"
+            name="city"
             placeholder="Coachella"
             value={this.state.city}
+            onChange={this.handleChange}
           />
         </label>
         <label>
           <span>State</span>
           <input
-            id="address-state"
-            name="address_state"
+            id="state"
+            name="state"
             placeholder="CA"
             value={this.state.state}
+            onChange={this.handleChange}
           />
         </label>
         <label>
           <span>ZIP</span>
           <input
-            id="address-zip"
-            name="address_zip"
+            id="zipcode"
+            name="zipcode"
             placeholder="92236"
             value={this.state.zipcode}
+            onChange={this.handleChange}
           />
         </label>
 
-        <button type="submit">Pay $25</button>
+        <button type="submit">COMPLETE CHECKOUT</button>
         <div className="outcome">
           <div className="error" />
           <div className="success">
@@ -140,13 +169,6 @@ class CheckoutForm extends Component {
           </div>
         </div>
       </form>
-      // <form onSubmit={this.submit}>
-      //   <div className="checkout">
-      //     <label>Credit or Debit Card</label>
-      //     <CardElement onReady={el => el.focus()} />
-      //     <button type="submit">COMPLETE PURCHASE</button>
-      //   </div>
-      // </form>
     )
   }
 }

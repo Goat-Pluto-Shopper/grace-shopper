@@ -44,6 +44,9 @@ export const postCart = cartInfo => async dispatch => {
   try {
     console.log('HI THUNK IS WORKING', cartInfo)
     const res = await axios.post('/api/orders', {
+      firstName: cartInfo.firstName,
+      lastName: cartInfo.lastName,
+      email: cartInfo.email,
       total: cartInfo.total,
       streetAddress: cartInfo.streetAddress,
       city: cartInfo.city,
