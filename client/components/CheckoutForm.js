@@ -1,19 +1,21 @@
+import {connect} from 'react-redux'
 import React, {Component} from 'react'
 import {CardElement, injectStripe} from 'react-stripe-elements'
+import {postCart} from '../store/cart'
 
 class CheckoutForm extends Component {
   constructor(props) {
     super(props)
     this.state = {
       complete: false,
-      firstName: '',
-      lastName: '',
-      total: '', //get from cartstate,
-      streetAddress: '',
-      aptNum: '',
-      city: '',
-      state: '',
-      zipcode: ''
+      firstName: 'Jane',
+      lastName: 'Doe',
+      total: 25, //get from cartstate,
+      streetAddress: '77 Winchester Lane',
+      aptNum: '1A',
+      city: 'Coachella',
+      state: 'CA',
+      zipcode: 92236
     }
     this.submit = this.submit.bind(this)
   }
@@ -21,6 +23,24 @@ class CheckoutForm extends Component {
   async submit(ev) {
     ev.preventDefault()
     console.log(ev.target)
+
+    // SUBMIT TO THUNK
+    let objToSubmit = {
+      total: this.state.total,
+      streetAddress: this.state.streetAddress,
+      city: this.state.city,
+      state: this.state.state,
+      zipcode: this.state.zipcode,
+      userId: this.props.user.id, // set this in checkoutForm
+      cart: this.props.cart
+    }
+
+    console.log('WILL SUBMIT THIS TO THUNK...', objToSubmit)
+
+    this.props.postCart(objToSubmit)
+
+    console.log('pls run')
+    // STRIPE
     let {token} = await this.props.stripe.createToken({name: 'Name'})
     let response = await fetch('/charge', {
       method: 'POST',
@@ -35,6 +55,10 @@ class CheckoutForm extends Component {
   }
 
   render() {
+    const {cart} = this.props
+    // console.log('CART!!!', cart)
+    console.log('user???', this.props)
+
     if (this.state.complete) return <h1>Purchase Complete</h1>
     console.log('checkout form props', this.props)
     return (
@@ -127,4 +151,17 @@ class CheckoutForm extends Component {
   }
 }
 
-export default injectStripe(CheckoutForm)
+const mapStateToProps = state => ({
+  cart: state.cart,
+  user: state.user
+})
+
+const mapDispatchToProps = dispatch => ({
+  postCart: cartInfo => dispatch(postCart(cartInfo))
+})
+
+const connectedCheckoutForm = connect(mapStateToProps, mapDispatchToProps)(
+  CheckoutForm
+)
+
+export default injectStripe(connectedCheckoutForm)

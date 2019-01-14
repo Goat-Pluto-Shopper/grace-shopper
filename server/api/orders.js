@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const {Order, Item} = require('../db/models')
+const {Order, Item, OrderedItems} = require('../db/models')
 
 // GET /api/orders/userId - user's past items
 router.get('/:userId', async (req, res, next) => {
@@ -17,27 +17,42 @@ router.get('/:userId', async (req, res, next) => {
 })
 
 // POST /api/orders - order (on checkout)
-// router.post('/', async (req, res, next) => {
-//   try {
-//     // get cart from req.body from local storage
-//     const cart = req.body
-//     const order = await Order.create({
-//       total: cart.total,
-//       streetAddress: cart.streetAddress,
-//       city: cart.city,
-//       state: cart.state,
-//       zipcode: cart.zipcode,
-//       userId: cart.userId
-//       // user: cart.user,
-//       // items: cart.items
-//     })
-//     // create orderedItems model and insert into here at the same time
-//     // await order.setUser(cart.user)
-//     // await order.setItems([cart.items[0]])
-//     res.json(order)
-//   } catch (err) {
-//     next(err)
-//   }
-// })
+router.post('/', async (req, res, next) => {
+  try {
+    // get cart items from cart redux store
+    // get user info from checkout form
+    const checkoutInfo = req.body
+    // console.log('REQ BODY HERE', checkoutInfo)
+    const order = await Order.create({
+      total: checkoutInfo.total,
+      streetAddress: checkoutInfo.streetAddress,
+      city: checkoutInfo.city,
+      state: checkoutInfo.state,
+      zipcode: checkoutInfo.zipcode,
+      userId: checkoutInfo.userId
+    })
+
+    // console.log('HIIIII ORDER ID IS HERE ----------', order.id)
+    // loop over cart items
+
+    const cart = checkoutInfo.cart
+    // console.log('CART!!!---------', cart)
+
+    // loop over cart items
+    for (let i = 0; i < cart.length; i++) {
+      //creates one row in OrderedItems table for each item
+      let orderedItem = await OrderedItems.create({
+        price: cart[i].price,
+        quantity: cart[i].quantity,
+        orderId: order.id,
+        itemId: cart[i].id
+      })
+    }
+
+    res.json(order)
+  } catch (err) {
+    next(err)
+  }
+})
 
 module.exports = router

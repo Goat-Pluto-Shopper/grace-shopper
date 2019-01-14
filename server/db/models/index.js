@@ -2,13 +2,14 @@ const User = require('./user')
 const Order = require('./order')
 const Item = require('./item')
 const db = require('../db')
+const OrderedItems = require('./orderedItems')
 
 // Model Associations
 Order.belongsTo(User)
 User.hasMany(Order)
-Order.belongsToMany(Item, {through: 'orderedItems'})
-// Order.hasMany(Item)
-Item.belongsToMany(Order, {through: 'orderedItems'})
+Order.belongsToMany(Item, {through: OrderedItems})
+Order.hasMany(Item) // breaks orders route
+Item.belongsToMany(Order, {through: OrderedItems})
 
 /**
  * If we had any associations to make, this would be a great place to put them!
@@ -27,5 +28,6 @@ module.exports = {
   db,
   User,
   Order,
-  Item
+  Item,
+  OrderedItems
 }
