@@ -2,9 +2,18 @@ import {connect} from 'react-redux'
 import React, {Component} from 'react'
 import {CardElement, injectStripe} from 'react-stripe-elements'
 import {postCart} from '../store/cart'
+// material ui
+import Grid from '@material-ui/core/Grid'
+import Button from '@material-ui/core/Button'
+import Typography from '@material-ui/core/Typography'
+import TextField from '@material-ui/core/TextField'
+import FormControlLabel from '@material-ui/core/FormControlLabel'
+import Checkbox from '@material-ui/core/Checkbox'
 
+// helper function to calculate price
 const totalPrice = cart =>
   cart.reduce((total, items) => items.price * items.cartQuantity + total, 0)
+
 class CheckoutForm extends Component {
   constructor(props) {
     super(props)
@@ -75,93 +84,128 @@ class CheckoutForm extends Component {
     console.log('checkout form props', this.props)
     return (
       <form onSubmit={this.submit}>
-        <input type="hidden" name="token" />
-        <label>
-          <label>Credit or Debit Card</label>
-          <CardElement onReady={el => el.focus()} />
-        </label>
-        <label>
-          <span>First name</span>
-          <input
-            id="firstName"
-            name="firstName"
-            placeholder="Jane"
-            value={this.state.firstName}
-            onChange={this.handleChange}
-          />
-        </label>
-        <label>
-          <span>Last name</span>
-          <input
-            id="lastName"
-            name="lastName"
-            placeholder="Doe"
-            value={this.state.lastName}
-            onChange={this.handleChange}
-          />
-        </label>
-        <label>
-          <span>E-mail</span>
-          <input
-            id="email"
-            name="email"
-            placeholder="email@email.com"
-            value={this.state.email}
-            onChange={this.handleChange}
-          />
-        </label>
-        <label>
-          <span>Street Address</span>
-          <input
-            id="streetAddress"
-            name="streetAddress"
-            placeholder="77 Winchester Lane"
-            value={this.state.streetAddress}
-            onChange={this.handleChange}
-          />
-        </label>
-        <label>
-          <span>Apt Number</span>
-          <input
-            id="aptNum"
-            name="aptNum"
-            placeholder="1A"
-            value={this.state.aptNum}
-            onChange={this.handleChange}
-          />
-        </label>
-        <label>
-          <span>City</span>
-          <input
-            id="city"
-            name="city"
-            placeholder="Coachella"
-            value={this.state.city}
-            onChange={this.handleChange}
-          />
-        </label>
-        <label>
-          <span>State</span>
-          <input
-            id="state"
-            name="state"
-            placeholder="CA"
-            value={this.state.state}
-            onChange={this.handleChange}
-          />
-        </label>
-        <label>
-          <span>ZIP</span>
-          <input
-            id="zipcode"
-            name="zipcode"
-            placeholder="92236"
-            value={this.state.zipcode}
-            onChange={this.handleChange}
-          />
-        </label>
+        <Typography variant="h6" gutterBottom>
+          Billing address
+        </Typography>
+        <Grid container spacing={24}>
+          <Grid item xs={12} sm={6}>
+            <TextField
+              required
+              id="firstName"
+              name="firstName"
+              placeholder="Jane"
+              value={this.state.firstName}
+              onChange={this.handleChange}
+              label="First name"
+              fullWidth
+              autoComplete="fname"
+            />
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <TextField
+              required
+              id="lastName"
+              name="lastName"
+              placeholder="Doe"
+              value={this.state.lastName}
+              onChange={this.handleChange}
+              label="Last name"
+              fullWidth
+              autoComplete="lname"
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <TextField
+              required
+              id="email"
+              name="email"
+              placeholder="email@email.com"
+              value={this.state.email}
+              onChange={this.handleChange}
+              label="Email"
+              fullWidth
+              autoComplete="billing address-line1"
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <TextField
+              required
+              id="streetAddress"
+              name="streetAddress"
+              placeholder="77 Winchester Lane"
+              value={this.state.streetAddress}
+              onChange={this.handleChange}
+              label="Street Address"
+              fullWidth
+              autoComplete="billing address-line1"
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <TextField
+              id="aptNum"
+              name="aptNum"
+              label="Apt Number"
+              placeholder="1A"
+              value={this.state.aptNum}
+              onChange={this.handleChange}
+              fullWidth
+              autoComplete="billing address-line2"
+            />
+          </Grid>
+          <Grid item xs={12} sm={4}>
+            <TextField
+              required
+              id="city"
+              name="city"
+              label="City"
+              placeholder="Coachella"
+              value={this.state.city}
+              onChange={this.handleChange}
+              fullWidth
+              autoComplete="billing address-level2"
+            />
+          </Grid>
+          <Grid item xs={12} sm={4}>
+            <TextField
+              id="state"
+              name="state"
+              placeholder="CA"
+              value={this.state.state}
+              onChange={this.handleChange}
+              label="State/Province/Region"
+              fullWidth
+            />
+          </Grid>
+          <Grid item xs={12} sm={4}>
+            <TextField
+              required
+              id="zipcode"
+              name="zipcode"
+              placeholder="92236"
+              value={this.state.zipcode}
+              onChange={this.handleChange}
+              label="Zip / Postal code"
+              fullWidth
+              autoComplete="billing postal-code"
+            />
+          </Grid>
+        </Grid>
 
-        <button type="submit">COMPLETE CHECKOUT</button>
+        <Typography variant="h6" gutterBottom>
+          Credit or Debit Card
+        </Typography>
+        <Grid container spacing={24}>
+          <input type="hidden" name="token" />
+
+          <Grid item xs={12}>
+            <CardElement onReady={el => el.focus()} />
+          </Grid>
+        </Grid>
+
+        <Button type="submit" variant="contained" color="primary">
+          COMPLETE CHECKOUT
+        </Button>
+
         <div className="outcome">
           <div className="error" />
           <div className="success">
