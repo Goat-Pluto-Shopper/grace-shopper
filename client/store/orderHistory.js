@@ -1,30 +1,27 @@
 import axios from 'axios'
-import history from '../history'
 
 /**
  * ACTION TYPES
  */
-const GET_ORDERS = 'GET_ORDERS'
-const GET_ITEMS = 'GET_ITEMS'
+const GOT_RECENT_ITEMS = 'GOT_RECENT_ITEMS'
 
 /**
  * INITIAL STATE
  */
-const defaultOrderHisory = {orders: [], recentItems: []}
+const defaultOrderHisory = {recentItems: []}
 
 /**
  * ACTION CREATORS
  */
-const getOrders = orders => ({type: GET_ORDERS, orders})
-const getItems = items => ({type: GET_ITEMS, items})
+const getRecentItems = items => ({type: GOT_RECENT_ITEMS, items})
 
 /**
  * THUNK CREATORS
  */
-export const getPastItems = userId => async dispatch => {
+export const getOrderHistory = userId => async dispatch => {
   try {
     const res = await axios.get(`/api/orders/${userId}`)
-    dispatch(getItems(res.data || defaultOrderHisory.items))
+    dispatch(getRecentItems(res.data || defaultOrderHisory.recentItems))
   } catch (err) {
     console.error(err)
   }
@@ -35,7 +32,7 @@ export const getPastItems = userId => async dispatch => {
  */
 export default function(state = defaultOrderHisory, action) {
   switch (action.type) {
-    case GET_ITEMS:
+    case GOT_RECENT_ITEMS:
       return {...state, recentItems: action.items}
     default:
       return state
