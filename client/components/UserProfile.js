@@ -19,10 +19,10 @@ class UserProfile extends Component {
   render() {
     const {user, items} = this.props
     return (
-      <div>
+      <div className="profileContainer">
         {user === undefined ? null : (
-          <div>
-            <h1>PROFILE</h1>
+          <div className="profileElement">
+            <h1 id="profile">Profile</h1>
             <div>
               <h3>
                 {user.firstName} {user.lastName}
@@ -31,17 +31,20 @@ class UserProfile extends Component {
             </div>
           </div>
         )}
-        {items[0] === undefined ? null : (
-          <Grid container spacing={24}>
-            {items.map(item => {
-              return (
-                <Grid item xs={12} sm={4} key={item.id}>
-                  <ListItems game={item} />
-                </Grid>
-              )
-            })}
-          </Grid>
-        )}
+        <div className="profileElement">
+          <h1>Order History</h1>
+          {items[0] === undefined ? null : (
+            <Grid container spacing={24}>
+              {items.map(item => {
+                return (
+                  <Grid item xs={12} sm={4} key={item.id}>
+                    <ListItems game={item} />
+                  </Grid>
+                )
+              })}
+            </Grid>
+          )}
+        </div>
       </div>
     )
   }

@@ -203,9 +203,12 @@ class CheckoutForm extends Component {
 
         <div className="outcome">
           <div className="error" />
+<<<<<<< HEAD
           {/* <div className="success">
             Success! Your Stripe token is <span className="token" />
           </div> */}
+=======
+>>>>>>> user profile styling
         </div>
       </form>
     )
