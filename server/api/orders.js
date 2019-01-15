@@ -66,7 +66,7 @@ router.post('/', async (req, res, next) => {
       //creates one row in OrderedItems table for each item
       let orderedItem = await OrderedItems.create({
         price: Number(cart[i].price),
-        quantity: Number(cart[i].quantity),
+        itemQuantity: Number(cart[i].cartQuantity),
         orderId: Number(order.id),
         itemId: Number(cart[i].id)
       })
