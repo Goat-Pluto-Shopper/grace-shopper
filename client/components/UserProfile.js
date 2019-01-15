@@ -18,7 +18,6 @@ class UserProfile extends Component {
 
   render() {
     const {user, items} = this.props
-    console.log(items)
     return (
       <div>
         {user === undefined ? null : (

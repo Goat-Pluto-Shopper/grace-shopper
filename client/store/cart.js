@@ -5,13 +5,13 @@ export const REMOVE_FROM_CART = 'REMOVE_FROM_CART'
 export const INCREMENT_QUANTITY = 'INCREMENT_QUANTITY'
 export const DECREMENT_QUANTITY = 'DECREMENT_QUANTITY'
 export const SUBMIT_CART_TO_SERVER = 'SUBMIT_CART_TO_SERVER'
-//initial state
+
+// INITIAL STATE
 // {
 //   cart: []
 // }
 
-//action creators
-
+// ACTION CREATORS
 export const addToCart = item => ({
   type: ADD_TO_CART,
   item
@@ -42,7 +42,6 @@ export const submitCart = cart => ({
 //this goes in checkoutForm.js
 export const postCart = cartInfo => async dispatch => {
   try {
-    console.log('HI THUNK IS WORKING', cartInfo)
     const res = await axios.post('/api/orders', {
       firstName: cartInfo.firstName,
       lastName: cartInfo.lastName,
@@ -81,7 +80,7 @@ const getItemIndex = (cart, id) => {
   return idx
 }
 
-//Reducer
+// REDUCER
 export default function cartReducer(cart = [], action) {
   const cartCopy = [...cart]
   switch (action.type) {

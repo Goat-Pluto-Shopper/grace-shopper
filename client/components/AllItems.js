@@ -5,8 +5,6 @@ import {fetchAllItems} from '../store/item'
 import {Link} from 'react-router-dom'
 import ListItems from './ListItems'
 import queryString from 'query-string'
-// const querystring = require('querystring');
-// const queryString = require('query-string');
 import NotFound from './NotFound'
 import SideBar from './SideBar'
 

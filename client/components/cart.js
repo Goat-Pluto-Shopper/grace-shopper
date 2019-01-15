@@ -7,14 +7,8 @@ const totalPrice = cart =>
   cart.reduce((total, items) => items.price * items.cartQuantity + total, 0)
 
 class Cart extends Component {
-  componentDidMount() {
-    // console.log('are there props on cart', this.props)
-  }
-
   render() {
     const {cart} = this.props
-    console.log('props passed to Cart.js', this.props)
-    console.log('cart', cart)
 
     return (
       <div id="cartContainer">
@@ -78,12 +72,6 @@ class Cart extends Component {
   }
 }
 
-// const mapState = state => {
-//   return {
-//     isLoggedIn: !!state.user.id
-//   }
-// }
-
 const mapStateToProps = state => ({
   cart: state.cart
 })
@@ -94,5 +82,3 @@ const mapDispatchToProps = dispatch => ({
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Cart)
-
-// export default Cart

@@ -63,7 +63,6 @@ const styles = theme => ({
 
 const LogInForm = props => {
   const {name, displayName, handleSubmit, error} = props
-  // console.log(props.classes, 'classes')
   const {classes} = props
   return (
     <div id="login-new">
