@@ -11,28 +11,20 @@ const PORT = process.env.PORT || 8080
 const app = express()
 const socketio = require('socket.io')
 
-module.exports = app
-
 // This is a global Mocha hook, used for resource cleanup.
 // Otherwise, Mocha v4+ never quits after tests.
 if (process.env.NODE_ENV === 'test') {
   after('close the session store', () => sessionStore.stopExpiringSessions())
 }
 
-/**
- * In your development environment, you can keep all of your
- * app's secret API keys in a file called `secrets.js`, in your project
- * root. This file is included in the .gitignore - it will NOT be tracked
- * or show up on Github. On your production server, you can add these
- * keys as environment variables, so that they can still be read by the
- * Node process on process.env
- */
+// Secrets file not tracked by git
 if (process.env.NODE_ENV !== 'production') require('../secrets')
 const stripe = require('stripe')(process.env.STRIPE_SK)
 
-// passport registration
+// passport registration (authentication)
 passport.serializeUser((user, done) => done(null, user.id))
 
+// (authentication)
 passport.deserializeUser(async (id, done) => {
   try {
     const user = await db.models.user.findById(id)
@@ -73,9 +65,8 @@ const createApp = () => {
   // static file-serving middleware
   app.use(express.static(path.join(__dirname, '..', 'public')))
 
-  // charge route - export this later
-  app.post('/charge', async (req, res) => {
-    console.log('req.body', req.body)
+  // Stripe charge route
+  app.post('/charge', async (req, res, next) => {
     try {
       let {status} = await stripe.charges.create({
         amount: 2000,
@@ -86,8 +77,7 @@ const createApp = () => {
 
       res.json({status})
     } catch (err) {
-      console.log(err)
-      res.status(500).end()
+      next(err)
     }
   })
 
@@ -143,3 +133,5 @@ if (require.main === module) {
 } else {
   createApp()
 }
+
+module.exports = app

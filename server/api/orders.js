@@ -1,14 +1,11 @@
 const router = require('express').Router()
 const {User, Order, Item, OrderedItems} = require('../db/models')
-const {v4} = require('node-uuid').v4()
 
 //authentication
 function isAuthenticated(req, res, next) {
   if (req.user.id) {
-    console.log('i hite req user from auteh')
     return next()
   } else {
-    console.log('i hit err')
     res.status(403).end()
   }
 }
@@ -31,19 +28,15 @@ router.get('/', isAuthenticated, async (req, res, next) => {
 // POST /api/orders - order (on checkout)
 router.post('/', async (req, res, next) => {
   try {
-    // get cart items from cart redux store
     // get user info from checkout form
     const checkoutInfo = req.body
-    console.log('REQ BODY HERE', checkoutInfo)
     if (!checkoutInfo.userId) {
       const guestUser = await User.create({
         firstName: checkoutInfo.firstName,
         lastName: checkoutInfo.lastName,
         email: checkoutInfo.email,
-        // password: v4()
         password: 'password'
       })
-      console.log('guestUser', guestUser)
       checkoutInfo.userId = Number(guestUser.id)
     }
     const order = await Order.create({
@@ -55,11 +48,7 @@ router.post('/', async (req, res, next) => {
       userId: Number(checkoutInfo.userId)
     })
 
-    // console.log('HIIIII ORDER ID IS HERE ----------', order.id)
-    // loop over cart items
-
     const cart = checkoutInfo.cart
-    // console.log('CART!!!---------', cart)
 
     // loop over cart items
     for (let i = 0; i < cart.length; i++) {
