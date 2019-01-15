@@ -51,8 +51,10 @@ const styles = theme => ({
     marginTop: theme.spacing.unit
   },
   submit: {
-    marginTop: theme.spacing.unit * 3
+    marginTop: theme.spacing.unit * 3,
     // backgroundColor: 'green'
+    float: 'right',
+    padding: '.7em 1.5em'
   },
   center: {
     textAlign: 'center'
