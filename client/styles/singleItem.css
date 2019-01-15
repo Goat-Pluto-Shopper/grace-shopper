@@ -1,18 +1,35 @@
 #singleItemImg {
   width: 45%;
+  max-height: 550px;
+  background-color: white;
 }
 
 #singleItemImg img {
+  padding: 3rem;
   max-width: 100%;
+
   height: auto;
 }
 
 #singleItemInfo {
+  color: white;
+  margin: 2rem;
+  padding-left: 1rem;
   flex: 1;
+}
+
+#singleItemInfo p {
+  color: whitesmoke;
+}
+
+#singleItemInfo button:hover {
+  background-color: var(--teal);
+  transition: background-color 0.5s ease;
 }
 
 #singleItemContainer {
   display: flex;
+  margin: 2rem;
 }
 
 #singleRelatedContainer {
@@ -20,11 +37,23 @@
 }
 
 #singleRelatedContainer .game {
+  /* max-height: 400px; */
   width: 25%;
+  margin: 2rem;
 }
 
+#related {
+  margin-left: 2rem;
+  color: var(--gray);
+}
+
+#price {
+  color: var(--gray);
+}
+
+/*
 #singleRelatedContainer .game img {
   max-width: 100%;
   height: 250px;
   object-fit: cover;
-}
+} */

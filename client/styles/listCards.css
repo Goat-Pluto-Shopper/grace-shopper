@@ -1,0 +1,17 @@
+.cardMedia {
+  padding: 2rem;
+  max-height: 400px;
+}
+
+.cardContent {
+  background: var(--indigo);
+  color: white;
+}
+
+.cardContent h2 {
+  padding-left: 1rem;
+}
+
+.cardContent p {
+  padding-left: 1rem;
+}
