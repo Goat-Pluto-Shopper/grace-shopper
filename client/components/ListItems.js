@@ -20,7 +20,7 @@ const ListItems = props => {
               className="cardMedia"
               component="img"
               alt={game.name}
-              height="500"
+              height="450"
               maxwidth="345"
               image={game.imageUrl}
               p="2"

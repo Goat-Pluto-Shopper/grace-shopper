@@ -22,7 +22,13 @@ a:visited {
 }
 
 .stat-font {
+  padding-left: 1rem;
   letter-spacing: 0.5rem;
+}
+
+.stat-font:hover {
+  color: greenyellow;
+  transition: color 0.5s ease;
 }
 
 #ico {
