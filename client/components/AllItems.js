@@ -57,7 +57,7 @@ class AllItems extends Component {
           <div id="test-contain">
             <div id="home-list-item-container">
               {allGames.map(game => {
-                return <ListItems game={game} />
+                return <ListItems game={game} key={game.id} />
               })}
             </div>
           </div>
