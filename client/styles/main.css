@@ -6,10 +6,11 @@ main {
 
 /* sidebar and check stuff */
 #sidebar {
-  max-width: 30%;
+  /* max-width: 30%; */
   min-width: 300px;
   background: var(--darkgray);
   padding: 2em;
+  padding-left: 3em;
 }
 
 #sidebar form label {
@@ -99,3 +100,15 @@ main {
 #main-container {
   width: 100%;
 }
+
+#login-new {
+  width: 45%;
+  /* margin:3em; */
+  margin: auto;
+  padding: 5em 3em;
+  padding-top: 2em;
+}
+/* 
+.MuiButton-fullWidth-192{
+  width:40%;
+} */
