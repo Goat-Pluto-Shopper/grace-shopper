@@ -7,8 +7,8 @@ const OrderedItems = require('./orderedItems')
 // Model Associations
 Order.belongsTo(User)
 User.hasMany(Order)
-Order.hasMany(Item) // breaks orders route?
 Order.belongsToMany(Item, {through: OrderedItems})
+//Order.hasMany(Item) // breaks orders route?
 Item.belongsToMany(Order, {through: OrderedItems})
 
 // Export all models so we can get any model from
