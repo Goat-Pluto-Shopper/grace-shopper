@@ -2,7 +2,6 @@ import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import React, {Component} from 'react'
 import {incrementQuantity, decrementQuantity} from '../store/'
-import Button from '@material-ui/core/Button'
 
 const totalPrice = cart =>
   cart.reduce((total, items) => items.price * items.cartQuantity + total, 0)
@@ -20,6 +19,7 @@ class Cart extends Component {
     return (
       <div id="cartContainer">
         <h1>Shopping Cart</h1>
+        <hr />
         <div id="cart">
           {/* FOR EACH ITEM */}
           <div className="cartLeft">
@@ -29,9 +29,11 @@ class Cart extends Component {
                   <div className="cartItemLeft">
                     <img src={item.imageUrl} />
                   </div>
+                  {/* end cartItemLeft div */}
+
                   <div className="cartItemRight">
                     <h2>{item.name}</h2>
-                    <p>${item.price}</p>
+                    <p>${(item.price / 100).toFixed(2)}</p>
                     <div className="quantityBlock">
                       <button
                         type="button"
@@ -49,20 +51,23 @@ class Cart extends Component {
                         +
                       </button>
                     </div>
+                    {/* end quantityBlock div */}
                   </div>
-                </div>
+                  {/* end cartItemRight div */}
+                </div> //* end cartItem div
               )
             })}
-          </div>{' '}
+          </div>
           {/* end cartLeft div */}
           <div className="cartRight">
             <div className="totalPrice">
-              TOTAL: ${totalPrice(cart).toFixed(2)}
+              <h2>TOTAL</h2>
+              <h2>${(totalPrice(cart) / 100).toFixed(2)}</h2>
             </div>
             <Link to="/checkout">
-              <Button variant="contained" color="primary" type="checkout">
-                CHECKOUT
-              </Button>
+              <button type="checkout" className="checkout">
+                <h2>CHECKOUT</h2>
+              </button>
             </Link>
           </div>
           {/* end cartRight div */}
