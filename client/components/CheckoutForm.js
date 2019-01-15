@@ -36,7 +36,6 @@ class CheckoutForm extends Component {
 
   async submit(ev) {
     ev.preventDefault()
-    console.log(ev.target)
 
     // SUBMIT TO THUNK
     let objToSubmit = {
@@ -52,12 +51,8 @@ class CheckoutForm extends Component {
       userId: this.props.user.id, // set this in checkoutForm
       cart: this.props.cart
     }
-
-    console.log('WILL SUBMIT THIS TO THUNK...', objToSubmit)
-
     this.props.postCart(objToSubmit)
 
-    console.log('pls run')
     // STRIPE
     let {token} = await this.props.stripe.createToken({
       name: 'Name'
@@ -71,7 +66,6 @@ class CheckoutForm extends Component {
     if (response.status == 200) {
       console.log('i hit response ok')
       this.setState({complete: true})
-      console.log('Purchase Complete!')
     }
   }
 
@@ -81,11 +75,8 @@ class CheckoutForm extends Component {
 
   render() {
     const {cart} = this.props
-    // console.log('CART!!!', cart)
-    console.log('user???', this.props)
 
     if (this.state.complete) return <h1>Purchase Complete</h1>
-    console.log('checkout form props', this.props)
     return (
       <form onSubmit={this.submit}>
         <Typography variant="h6" gutterBottom>

@@ -8,7 +8,6 @@ import AddToCart from './AddToCart'
 
 class SingleItem extends Component {
   componentDidMount() {
-    // console.log(this.props.match.params.id, 'props from single item');
     this.props.fetchSingleItem(this.props.match.params.id)
     this.props.fetchRelatedItems(this.props.match.params.id)
     this.props.fetchToggle(false)

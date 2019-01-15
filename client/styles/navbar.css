@@ -49,8 +49,12 @@ a:visited {
 }
 
 #nav ul {
+  display: flex;
+  justify-content: space-between;
   padding: 0;
   margin: 0;
+  align-items: center;
+  justify-items: center;
 }
 
 #nav li {
