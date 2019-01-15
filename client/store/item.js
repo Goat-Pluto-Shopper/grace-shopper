@@ -48,11 +48,9 @@ const getQueryItems = items => ({
 export const fetchAllItems = query => async dispatch => {
   try {
     if (query) {
-      console.log('i hit query in item', query)
       const {data} = await axios.get(`/api/games/${query}`)
       dispatch(getAllItems(data || itemState.allItems))
     } else {
-      console.log('not query')
       const {data} = await axios.get('/api/games')
       dispatch(getAllItems(data || itemState.allItems))
     }
@@ -78,15 +76,6 @@ export const fetchRelatedItems = id => async dispatch => {
     console.error(err)
   }
 }
-
-// export const fetchQueryItems = query => async dispatch => {
-//   try{
-//     const res = await axios.get(`/`)
-//   }
-//   catch(err){
-//     console.error(err)
-//   }
-// }
 
 /**
  * REDUCER

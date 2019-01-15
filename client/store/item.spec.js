@@ -54,28 +54,6 @@ describe('thunk creators', () => {
       expect(actions[0].type).to.be.equal('GET_ALL_ITEMS')
       expect(actions[0].items).to.be.deep.equal(fakeItems)
     })
-
-    // it('filters the data if there is query', async () => {
-    //   mockAxios.onGet('/api/games').replyOnce(200, fakeItems)
-    //   await store.dispatch(fetchAllItems({category: ['board']}))
-    //   const actions = store.getActions()
-    //   expect(actions[0].items.length).to.be.deep.equal(2)
-    // })
-
-    // it('filters multiple query params', async () => {
-    //   mockAxios.onGet('/api/games').replyOnce(200, fakeItems)
-    //   await store.dispatch(
-    //     fetchAllItems({category: ['card', 'board'], ageRange: ['12+']})
-    //   )
-    //   const actions = store.getActions()
-    //   expect(actions[0].items.length).to.be.deep.equal(2)
-    // })
-    // it('ignores querys that arent valid', async () => {
-    //   mockAxios.onGet('/api/games').replyOnce(200, fakeItems)
-    //   await store.dispatch(fetchAllItems({somethingFake: ['something']}))
-    //   const actions = store.getActions()
-    //   expect(actions[0].items.length).to.be.deep.equal(0)
-    // })
   })
 
   describe('fetchSingleItem', () => {
