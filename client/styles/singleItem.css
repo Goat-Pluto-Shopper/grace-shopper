@@ -1,15 +1,14 @@
 #singleItemImg {
   width: 45%;
-  max-height: 550px;
   background-color: white;
   align-items: center;
   justify-content: center;
+  object-fit: contain;
 }
 
 #singleItemImg img {
   padding: 3rem;
   max-width: 100%;
-
   height: auto;
 }
 
