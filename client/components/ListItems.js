@@ -30,7 +30,7 @@ const ListItems = props => {
               className={classes.imgPadding}
               component="img"
               alt={game.name}
-              height="300"
+              height="500"
               maxwidth="345"
               image={game.imageUrl}
               p="2"

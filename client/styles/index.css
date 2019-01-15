@@ -57,7 +57,9 @@ p {
 }
 
 img {
-  width: 30%;
+  object-fit: contain;
+  /* max-height: 100%;
+  width: auto; */
 }
 
 /* tablet */
