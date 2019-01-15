@@ -15,23 +15,20 @@ const Navbar = props => {
         <Link to="/">
           {/* <img src="imgs/placeholderLogo.png" className="nav-logo" alt="logo" /> */}
           <h1 className="stat-font" style={{margin: '0'}}>
-            ({'\u00A0'} Pluto Games {'\u00A0'}
-            {'\u00A0'}
-            {'\u00A0'}
-            {'\u00A0'}
-            {'\u00A0'}
-            {'\u00A0'} )
+            Pluto Games
           </h1>
         </Link>
       </div>
       <div id="nav">
         <ul>
           <Link to="/">
-            <li>Show All</li>
+            <li>All GAMES</li>
           </Link>
+          •
           <Link to="/board">
             <li>Board</li>
           </Link>
+          •
           <Link to="/card">
             <li>Card</li>
           </Link>
