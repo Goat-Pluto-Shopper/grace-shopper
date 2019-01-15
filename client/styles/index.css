@@ -11,6 +11,7 @@
 @import './home.css';
 @import './listCards.css';
 @import './usernav.css';
+@import './userprofile.css';
 
 :root {
   --primary: #cda36c;
