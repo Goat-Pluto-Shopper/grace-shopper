@@ -2,6 +2,7 @@ import {connect} from 'react-redux'
 import React, {Component} from 'react'
 import {CardElement, injectStripe} from 'react-stripe-elements'
 import {postCart} from '../store/cart'
+import axios from 'axios'
 // material ui
 import Grid from '@material-ui/core/Grid'
 import Button from '@material-ui/core/Button'
@@ -59,16 +60,16 @@ class CheckoutForm extends Component {
     console.log('pls run')
     // STRIPE
     let {token} = await this.props.stripe.createToken({
-      name: 'Name',
-      amount: 5000
+      name: 'Name'
     })
-    let response = await fetch('/charge', {
-      method: 'POST',
-      headers: {'Content-Type': 'text/plain'},
-      body: token
+    let response = await axios.post('/charge', {
+      tokenId: token.id,
+      amount: this.state.total
     })
-
-    if (response.ok) {
+    console.log(response.status, 'response')
+    // console.log(response.ok, 'response ok');
+    if (response.status == 200) {
+      console.log('i hit response ok')
       this.setState({complete: true})
       console.log('Purchase Complete!')
     }
@@ -204,16 +205,16 @@ class CheckoutForm extends Component {
             <CardElement onReady={el => el.focus()} />
           </Grid>
         </Grid>
-
+        <input type="hidden" name="chargeAmount" value="3000" />
         <Button type="submit" variant="contained" color="primary">
           COMPLETE CHECKOUT
         </Button>
 
         <div className="outcome">
           <div className="error" />
-          <div className="success">
+          {/* <div className="success">
             Success! Your Stripe token is <span className="token" />
-          </div>
+          </div> */}
         </div>
       </form>
     )
