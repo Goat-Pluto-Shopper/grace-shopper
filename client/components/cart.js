@@ -2,6 +2,7 @@ import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import React, {Component} from 'react'
 import {incrementQuantity, decrementQuantity} from '../store/'
+import CartItem from './CartItem'
 
 const totalPrice = cart =>
   cart.reduce((total, items) => items.price * items.cartQuantity + total, 0)
@@ -19,36 +20,12 @@ class Cart extends Component {
           <div className="cartLeft">
             {cart.map(item => {
               return (
-                <div key={item.id} className="cartItem">
-                  <div className="cartItemLeft">
-                    <img src={item.imageUrl} />
-                  </div>
-                  {/* end cartItemLeft div */}
-
-                  <div className="cartItemRight">
-                    <h2>{item.name}</h2>
-                    <p>${(item.price / 100).toFixed(2)}</p>
-                    <div className="quantityBlock">
-                      <button
-                        type="button"
-                        name="increment"
-                        onClick={() => this.props.decrementQuantity(item)}
-                      >
-                        -
-                      </button>
-                      <p>{item.cartQuantity}</p>
-                      <button
-                        type="button"
-                        name="decrement"
-                        onClick={() => this.props.incrementQuantity(item)}
-                      >
-                        +
-                      </button>
-                    </div>
-                    {/* end quantityBlock div */}
-                  </div>
-                  {/* end cartItemRight div */}
-                </div> //* end cartItem div
+                <CartItem
+                  item={item}
+                  key={item.id}
+                  incrementQuantity={this.props.incrementQuantity}
+                  decrementQuantity={this.props.decrementQuantity}
+                />
               )
             })}
           </div>
