@@ -1,10 +1,13 @@
 @import url('https://fonts.googleapis.com/css?family=Happy+Monkey|Open+Sans');
 @import url('https://fonts.googleapis.com/css?family=Staatliches');
+@import url('https://fonts.googleapis.com/css?family=Dosis');
+
 @import './navbar.css';
 @import './footer.css';
 @import './singleItem.css';
 @import './main.css';
 @import './cart.css';
+@import './header.css';
 
 :root {
   --primary: #cda36c;
@@ -12,10 +15,26 @@
   --brown: #4f382e;
   --gray: #cac9d0;
   --white: #fff;
+  --indigo: #110d3a;
+  --highlight: #f46542;
+  --darkgray: #1e2023;
 }
 
 body {
-  background: var(--gray);
+  /* https://uigradients.com/#Ash */
+
+  background: #606c88; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #3f4c6b,
+    #606c88
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #3f4c6b,
+    #606c88
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
   margin: 0;
   font-family: 'Open Sans', sans-serif;
 }
@@ -24,7 +43,9 @@ h1,
 h2,
 h3,
 h4 {
-  font-family: 'Happy Monkey', cursive;
+  font-family: 'Dosis', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
 }
 
 p {
@@ -36,7 +57,9 @@ p {
 }
 
 img {
-  width: 30%;
+  object-fit: contain;
+  /* max-height: 100%;
+  width: auto; */
 }
 
 /* tablet */

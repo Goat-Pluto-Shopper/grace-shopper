@@ -1,7 +1,7 @@
 footer {
   width: 100%;
   min-height: 75px;
-  background: var(--primary);
+  background: var(--darkgray);
   color: white;
   display: inline-block;
   font-size: 1rem;
@@ -9,6 +9,8 @@ footer {
   flex: 1;
   justify-content: center;
   align-items: center;
+  font-family: 'Dosis', sans-serif;
+  text-transform: uppercase;
 }
 
 .footer-item {

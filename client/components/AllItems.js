@@ -61,7 +61,7 @@ class AllItems extends Component {
           <Grid container spacing={24}>
             {allGames.map(game => {
               return (
-                <Grid item xs={12} sm={4} key={game.id}>
+                <Grid item xs={12} md={4} sm={6} key={game.id}>
                   <ListItems game={game} />
                 </Grid>
               )
