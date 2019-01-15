@@ -8,6 +8,7 @@
 @import './main.css';
 @import './cart.css';
 @import './header.css';
+@import './listCards.css';
 
 :root {
   --primary: #cda36c;
@@ -18,6 +19,7 @@
   --indigo: #110d3a;
   --highlight: #f46542;
   --darkgray: #1e2023;
+  --teal: #60bca3;
 }
 
 html {

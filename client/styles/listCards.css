@@ -1,0 +1,7 @@
+.cardMedia {
+}
+
+.cardContent {
+  background: var(--indigo);
+  color: white;
+}
