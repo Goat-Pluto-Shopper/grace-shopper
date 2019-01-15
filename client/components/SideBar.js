@@ -47,6 +47,7 @@ class SideBar extends React.Component {
               name="ageRange"
               value="4-7"
             />4-7
+            <span className="checkmark" />
           </label>
           <label className="sidebar-check">
             <input
@@ -55,6 +56,7 @@ class SideBar extends React.Component {
               name="ageRange"
               value="7-12"
             />7-12
+            <span className="checkmark" />
           </label>
           <label className="sidebar-check">
             <input
@@ -63,6 +65,7 @@ class SideBar extends React.Component {
               name="ageRange"
               value="12+"
             />12+
+            <span className="checkmark" />
           </label>
           <label htmlFor="tags">
             <h3>Category :</h3>
@@ -74,6 +77,7 @@ class SideBar extends React.Component {
               name="category"
               value="board"
             />board
+            <span className="checkmark" />
           </label>
           <label className="sidebar-check">
             <input
@@ -82,6 +86,7 @@ class SideBar extends React.Component {
               name="category"
               value="card"
             />card
+            <span className="checkmark" />
           </label>
           <label htmlFor="tags">
             <h3>Tags :</h3>
@@ -92,7 +97,8 @@ class SideBar extends React.Component {
               type="checkbox"
               name="tags"
               value="party games"
-            />party{' '}
+            />party
+            <span className="checkmark" />
           </label>
           <label className="sidebar-check">
             <input
@@ -101,6 +107,7 @@ class SideBar extends React.Component {
               name="tags"
               value="group games"
             />group
+            <span className="checkmark" />
           </label>
           <label className="sidebar-check">
             <input
@@ -109,6 +116,7 @@ class SideBar extends React.Component {
               name="tags"
               value="family games"
             />family
+            <span className="checkmark" />
           </label>
           <label className="sidebar-check">
             <input
@@ -117,6 +125,7 @@ class SideBar extends React.Component {
               name="tags"
               value="educational"
             />educational
+            <span className="checkmark" />
           </label>
           <label className="sidebar-check">
             <input
@@ -125,6 +134,7 @@ class SideBar extends React.Component {
               name="tags"
               value="guessing games"
             />guessing
+            <span className="checkmark" />
           </label>
         </form>
       </div>

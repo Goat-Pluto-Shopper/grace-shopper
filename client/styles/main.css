@@ -4,6 +4,7 @@ main {
   margin: 0;
 }
 
+/* sidebar and check stuff */
 #sidebar {
   max-width: 25%;
   min-width: 250px;
@@ -18,6 +19,20 @@ main {
 .sidebar-check {
   padding: 0 1.5em;
 }
+
+.sidebar-check {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
 .sidebar-check input[type='checkbox'] {
   position: absolute;
   opacity: 0;
@@ -37,13 +52,13 @@ main {
 }
 
 /* On mouse-over, add a grey background color */
-.container:hover input ~ .checkmark {
-  background-color: #ccc;
+.sidebar-check:hover input[type='checkbox'] ~ .checkmark {
+  background-color: red;
 }
 
 /* When the checkbox is checked, add a blue background */
-.container input:checked ~ .checkmark {
-  background-color: #2196f3;
+.sidebar-check input[type='checkbox']:checked ~ .checkmark {
+  background-color: green;
 }
 
 /* Create the checkmark/indicator (hidden when not checked) */
@@ -54,14 +69,14 @@ main {
 }
 
 /* Show the checkmark when checked */
-.container input:checked ~ .checkmark:after {
+.sidebar-check input[type='checkbox']:checked ~ .checkmark:after {
   display: block;
 }
 
 /* Style the checkmark/indicator */
-.container .checkmark:after {
-  left: 9px;
-  top: 5px;
+.checkmark:after {
+  left: 10px;
+  top: 6px;
   width: 5px;
   height: 10px;
   border: solid white;
