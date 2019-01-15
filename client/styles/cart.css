@@ -10,7 +10,6 @@
 }
 
 .cartItem {
-  /* border: 3px solid black; */
   display: flex;
   max-height: 250px;
   margin-bottom: 2rem;
@@ -19,13 +18,11 @@
 
 /* container for image */
 .cartItemLeft {
-  /* border: 3px solid red; */
   background-color: white;
   padding: 1rem;
 }
 
 .cartItemRight {
-  /* border: 3px solid blue; */
   align-self: center;
   margin-left: 2rem;
 }
@@ -35,7 +32,6 @@
 }
 
 .cartItemLeft img {
-  /* max-width: 100%; */
   width: 200px;
   height: auto;
   object-fit: contain;

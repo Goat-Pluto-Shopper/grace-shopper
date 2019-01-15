@@ -1,12 +1,9 @@
 main {
-  /* display: flex;
-  flex: 1; */
   margin: 0;
 }
 
 /* sidebar and check stuff */
 #sidebar {
-  /* max-width: 30%; */
   min-width: 300px;
   background: var(--darkgray);
   padding: 2em;
@@ -103,12 +100,7 @@ main {
 
 #login-new {
   width: 45%;
-  /* margin:3em; */
   margin: auto;
   padding: 5em 3em;
   padding-top: 2em;
 }
-/* 
-.MuiButton-fullWidth-192{
-  width:40%;
-} */
