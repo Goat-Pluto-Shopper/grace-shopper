@@ -47,6 +47,7 @@ class SingleItem extends Component {
         {relatedItems.length > 0 ? (
           <div>
             <h3 id="related">Related items</h3>
+            <hr id="relatedHR" />
             <div id="singleRelatedContainer">
               {relatedItems.map(game => (
                 <ListItems key={game.id} game={game} />
