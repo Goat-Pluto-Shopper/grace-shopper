@@ -43,6 +43,7 @@
 
 .quantityBlock {
   display: flex;
+  justify-content: space-between;
   flex-direction: row;
   background-color: white;
   margin-bottom: 2rem;
@@ -65,6 +66,9 @@
   padding: 0 1rem 0 1rem;
   align-self: center;
   justify-self: center;
+  /* font-size: 500px; */
+  color: black;
+  font-weight: bold;
 }
 
 .totalPrice {
