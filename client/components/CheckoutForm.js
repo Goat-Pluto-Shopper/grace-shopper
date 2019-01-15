@@ -58,11 +58,14 @@ class CheckoutForm extends Component {
 
     console.log('pls run')
     // STRIPE
-    let {token} = await this.props.stripe.createToken({name: 'Name'})
+    let {token} = await this.props.stripe.createToken({
+      name: 'Name',
+      amount: 5000
+    })
     let response = await fetch('/charge', {
       method: 'POST',
       headers: {'Content-Type': 'text/plain'},
-      body: token.id
+      body: token
     })
 
     if (response.ok) {
