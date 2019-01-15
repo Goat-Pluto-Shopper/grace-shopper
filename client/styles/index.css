@@ -8,7 +8,7 @@
 @import './main.css';
 @import './cart.css';
 @import './header.css';
-
+@import './home.css';
 :root {
   --primary: #cda36c;
   --dark: #a27845;

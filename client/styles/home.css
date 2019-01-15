@@ -1,0 +1,18 @@
+#home-list-item-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: minmax(50px, auto);
+  grid-gap: 2em;
+  padding: 1em;
+  padding-top: 2em;
+}
+
+#home-side-list-flex {
+  display: flex;
+  /* padding:1em; */
+}
+
+#test-contain {
+  max-width: 75%;
+  margin: auto;
+}

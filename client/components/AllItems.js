@@ -52,12 +52,16 @@ class AllItems extends Component {
       )
     } else {
       return (
-        <React.Fragment>
+        <div id="home-side-list-flex">
           <SideBar />
-          {allGames.map(game => {
-            return <ListItems game={game} />
-          })}
-        </React.Fragment>
+          <div id="test-contain">
+            <div id="home-list-item-container">
+              {allGames.map(game => {
+                return <ListItems game={game} />
+              })}
+            </div>
+          </div>
+        </div>
       )
     }
   }
