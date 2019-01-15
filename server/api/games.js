@@ -32,7 +32,6 @@ router.get('/related/:id', async (req, res, next) => {
     const relatedGames = await Item.findAll({
       limit: 4,
       where: {
-        ageRange: currentGame.dataValues.ageRange,
         tags: {
           $overlap: currentGame.dataValues.tags
         },

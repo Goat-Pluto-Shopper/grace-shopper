@@ -23,19 +23,24 @@ const items = [
     name: 'Avalon',
     description:
       "The Resistance: Avalon pits the forces of Good and Evil in a battle to control the future of civilization. Arthur represents the future of Britain, a promise of prosperity and honor, yet hidden among his brave warriors are Mordred's unscrupulous minions. These forces of evil are few in number but have knowledge of each other and remain hidden from all but one of Arthur's servants. Merlin alone knows the agents of evil, but he must speak of this only in riddles. If his true identity is discovered, all will be lost.",
+    quantity: 35,
     price: 1999,
     imageUrl:
       'https://images-na.ssl-images-amazon.com/images/I/71ooTJfPLPL._SL1159_.jpg',
     category: 'board',
     ageRange: '12+',
-    tags: ['board']
+    tags: ['board', 'strategy']
   },
   {
     name: 'Uno',
+    description:
+      'This #1 Compact UNO Card Game is fast fun for everyone!! Its compact size makes it easier for all around enjoyment. This can be used at home or as a take along game in your travel bag. It is definitely worth to purchase, if you are with children seven years or older. Object of the game: Be the first player to get rid of all of your cards in each round and score points for the cards your opponents are left holding. When you are down to one card, don\'t forget to yell "UNO". Points in rounds accumulate and the first player to reach 500 points wins. Contents: 108 compact UNO cards as follows 19 Blue cards - 0 to 9 19 Green cards - 0 to 9 19 Red cards - 0 to 9 19 Yellow cards - 0 to 9 8 Draw Two cards - 2 each in blue, green, red, and yellow 8 Reverse cards - 2 each in blue, green, red, and yellow 8 Skip cards - 2 each in blue, green, red, and yellow 4 Wild cards 4 Wild Draw Four cards The actual size of the cards are approximately 1.7 x 2.5 inches. The box size is approximately 2.7 x 4.9 inches.',
+    quantity: 87,
     price: 1028,
     imageUrl: 'https://pics.drugstore.com/prodimg/227769/900.jpg',
     category: 'card',
-    tags: ['card']
+    agerange: '7-12',
+    tags: ['speed', 'family']
   },
   {
     name: 'Risk',
@@ -57,7 +62,7 @@ const items = [
     price: 1299,
     imageUrl:
       'https://images-na.ssl-images-amazon.com/images/I/71ZHkM7fHwL._SY679_.jpg',
-    tags: [],
+    tags: ['strategy', 'guessing'],
     category: 'board',
     ageRange: '12+'
   },
@@ -69,7 +74,7 @@ const items = [
     price: 4410,
     imageUrl:
       'https://catanshop.com/content/images/thumbs/0000380_catan_600.jpeg',
-    tags: ['strategy', 'skill', 'luck'],
+    tags: ['strategy'],
     category: 'board',
     ageRange: '12+'
   },
@@ -81,7 +86,7 @@ const items = [
     price: 1374,
     imageUrl:
       'https://target.scene7.com/is/image/Target/GUEST_6e63ca54-f938-4243-b2de-0523a05fe70a?wid=488&hei=488&fmt=pjpeg',
-    tags: ['chance', 'skill'],
+    tags: ['strategy'],
     category: 'board',
     ageRange: '12+'
   },
@@ -93,7 +98,7 @@ const items = [
     price: 2201,
     imageUrl:
       'https://images-na.ssl-images-amazon.com/images/I/91yUG40gv0L._SX425_.jpg',
-    tags: ['luck'],
+    tags: ['kids', 'family'],
     category: 'board',
     ageRange: '7-12'
   },
@@ -105,7 +110,7 @@ const items = [
     price: 1408,
     imageUrl:
       'https://www.binayaksen.net/wp-content/uploads/2017/08/0009636_floor-snakes-and-ladders-game.jpeg',
-    tags: ['counting', 'luck'],
+    tags: ['kids', 'family'],
     category: 'board',
     ageRange: '4-7'
   },
@@ -117,7 +122,7 @@ const items = [
     price: 1499,
     imageUrl:
       'https://www.riteaid.com/shop/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/0/5/0515154_1.jpg',
-    tags: ['strategy', 'word game'],
+    tags: ['strategy', 'educational'],
     category: 'board',
     ageRange: '12+'
   },
@@ -129,7 +134,7 @@ const items = [
     price: 2699,
     imageUrl:
       'https://storage.googleapis.com/kaggle-datasets-images/41273/67830/ea55ce3671370acf35824482983a9efb/data-original.jpg?t=2018-08-06-10-20-46',
-    tags: ['strategy', 'skill'],
+    tags: ['strategy'],
     category: 'board',
     ageRange: '12+'
   },
@@ -143,7 +148,7 @@ const items = [
     category: 'card',
     ageRange: '12+',
     quantity: 99,
-    tags: ['kittens', 'cards', 'exploding', 'game', 'group games']
+    tags: ['strategy']
   },
   {
     name: 'Monolopoly Deal',
@@ -155,7 +160,7 @@ const items = [
     category: 'card',
     ageRange: '12+',
     quantity: 45,
-    tags: ['monopoly', 'cards', 'deal', 'monopoly travel', 'group games']
+    tags: ['strategy']
   },
   {
     name: "Watch Ya' Mouth",
@@ -167,7 +172,7 @@ const items = [
     category: 'card',
     ageRange: '12+',
     quantity: 30,
-    tags: ['funny games', 'cards', 'loud', 'adult card games', 'group games']
+    tags: ['funny', 'family']
   },
   {
     name: 'HedBanz',
@@ -179,13 +184,7 @@ const items = [
     category: 'card',
     ageRange: '7-12',
     quantity: 80,
-    tags: [
-      'family games',
-      'cards',
-      'educational',
-      'guessing games',
-      'group games'
-    ]
+    tags: ['family', 'educational', 'guessing']
   },
   {
     name: 'HedBanz Junior',
@@ -197,15 +196,7 @@ const items = [
     category: 'card',
     ageRange: '4-7',
     quantity: 75,
-    tags: [
-      'family games',
-      'young children',
-      'kids',
-      'cards',
-      'educational',
-      'guessing games',
-      'group games'
-    ]
+    tags: ['family', 'kids', 'educational', 'guessing']
   },
   {
     name: 'Heads Up!',
@@ -217,7 +208,7 @@ const items = [
     category: 'card',
     ageRange: '12+',
     quantity: 75,
-    tags: ['party games', 'loud', 'cards', 'guessing games', 'group games']
+    tags: ['guessing', 'family']
   },
   {
     name: 'Smack It!',
@@ -229,7 +220,7 @@ const items = [
     category: 'card',
     ageRange: '7-12',
     quantity: 75,
-    tags: ['family games', 'loud', 'cards', 'guessing games', 'group games']
+    tags: ['family', 'speed', 'guessing']
   },
   {
     name: 'Blink',
@@ -241,7 +232,7 @@ const items = [
     category: 'card',
     ageRange: '7-12',
     quantity: 86,
-    tags: ['fun', 'cards', 'speed games', 'two player']
+    tags: ['speed']
   },
   {
     name: 'Cards Against Humanity',
@@ -253,7 +244,7 @@ const items = [
     category: 'card',
     ageRange: '12+',
     quantity: 100,
-    tags: ['fun', 'cards', 'adult games', 'party games', 'group games']
+    tags: ['funny']
   }
 ]
 
