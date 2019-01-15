@@ -40,7 +40,7 @@ class SideBar extends React.Component {
           <label htmlFor="ageRange">
             <h3>Age Range :</h3>
           </label>
-          <label>
+          <label className="sidebar-check">
             <input
               onChange={this.onChangeCheck}
               type="checkbox"
@@ -48,7 +48,7 @@ class SideBar extends React.Component {
               value="4-7"
             />4-7
           </label>
-          <label>
+          <label className="sidebar-check">
             <input
               onChange={this.onChangeCheck}
               type="checkbox"
@@ -56,7 +56,7 @@ class SideBar extends React.Component {
               value="7-12"
             />7-12
           </label>
-          <label>
+          <label className="sidebar-check">
             <input
               onChange={this.onChangeCheck}
               type="checkbox"
@@ -67,7 +67,7 @@ class SideBar extends React.Component {
           <label htmlFor="tags">
             <h3>Category :</h3>
           </label>
-          <label>
+          <label className="sidebar-check">
             <input
               onChange={this.onChangeCheck}
               type="checkbox"
@@ -75,7 +75,7 @@ class SideBar extends React.Component {
               value="board"
             />board
           </label>
-          <label>
+          <label className="sidebar-check">
             <input
               onChange={this.onChangeCheck}
               type="checkbox"
@@ -86,7 +86,7 @@ class SideBar extends React.Component {
           <label htmlFor="tags">
             <h3>Tags :</h3>
           </label>
-          <label>
+          <label className="sidebar-check">
             <input
               onChange={this.onChangeCheck}
               type="checkbox"
@@ -94,7 +94,7 @@ class SideBar extends React.Component {
               value="party games"
             />party{' '}
           </label>
-          <label>
+          <label className="sidebar-check">
             <input
               onChange={this.onChangeCheck}
               type="checkbox"
@@ -102,7 +102,7 @@ class SideBar extends React.Component {
               value="group games"
             />group
           </label>
-          <label>
+          <label className="sidebar-check">
             <input
               onChange={this.onChangeCheck}
               type="checkbox"
@@ -110,7 +110,7 @@ class SideBar extends React.Component {
               value="family games"
             />family
           </label>
-          <label>
+          <label className="sidebar-check">
             <input
               onChange={this.onChangeCheck}
               type="checkbox"
@@ -118,7 +118,7 @@ class SideBar extends React.Component {
               value="educational"
             />educational
           </label>
-          <label>
+          <label className="sidebar-check">
             <input
               onChange={this.onChangeCheck}
               type="checkbox"
