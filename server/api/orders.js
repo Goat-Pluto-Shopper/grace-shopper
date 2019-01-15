@@ -9,7 +9,7 @@ function isAuthenticated(req, res, next) {
     return next()
   } else {
     console.log('i hit err')
-    res.status(403).redirect('/')
+    res.status(403).end()
   }
 }
 
