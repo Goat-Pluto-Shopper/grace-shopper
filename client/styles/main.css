@@ -6,8 +6,8 @@ main {
 
 /* sidebar and check stuff */
 #sidebar {
-  max-width: 25%;
-  min-width: 250px;
+  max-width: 30%;
+  min-width: 300px;
   background: greenyellow;
   padding: 2em;
 }
