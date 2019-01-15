@@ -1,4 +1,3 @@
-const crypto = require('crypto')
 const Sequelize = require('sequelize')
 const db = require('../db')
 
@@ -33,7 +32,6 @@ const Item = db.define('item', {
     defaultValue: []
   },
   category: {
-    // board or card
     type: Sequelize.ENUM('board', 'card')
   },
   ageRange: {

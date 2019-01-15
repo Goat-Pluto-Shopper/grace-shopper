@@ -21,7 +21,10 @@ const User = db.define('user', {
     // username
     type: Sequelize.STRING,
     unique: true,
-    allowNull: false
+    allowNull: false,
+    validate: {
+      isEmail: true
+    }
   },
   password: {
     type: Sequelize.STRING,
@@ -80,5 +83,3 @@ const setSaltAndPassword = user => {
 
 User.beforeCreate(setSaltAndPassword)
 User.beforeUpdate(setSaltAndPassword)
-// User.beforeBulkCreate()
-// User.beforeBulkUpdate(setSaltAndPassword)

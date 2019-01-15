@@ -2,8 +2,7 @@ const router = require('express').Router()
 const {Item} = require('../db/models')
 const db = require('../db/db')
 
-// GET all games unless there is a search!
-// http://localhost:8080/api/games
+// GET /api/games with optional search params
 router.get('/', async (req, res, next) => {
   try {
     let games = await db.query(
@@ -26,12 +25,10 @@ router.get('/', async (req, res, next) => {
   }
 })
 
-//get related
-//api/games/related/:id
+// GET api/games/related/:id - get related games
 router.get('/related/:id', async (req, res, next) => {
   try {
     const currentGame = await Item.findById(req.params.id)
-    // console.log(currentGame.dataValues, 'item data');
     const relatedGames = await Item.findAll({
       limit: 4,
       where: {
@@ -50,8 +47,7 @@ router.get('/related/:id', async (req, res, next) => {
   }
 })
 
-// GET single game
-// http://localhost:8080/api/games/:id
+// GET /api/games/:id - get single game
 router.get('/:id', async (req, res, next) => {
   try {
     const id = req.params.id

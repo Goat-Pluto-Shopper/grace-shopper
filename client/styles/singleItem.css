@@ -1,3 +1,9 @@
+#singleItemComponentContainer {
+  padding-top: 1rem;
+  width: 90%;
+  margin: auto;
+}
+
 #singleItemImg {
   width: 45%;
   background-color: white;
