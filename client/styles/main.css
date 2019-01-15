@@ -7,7 +7,7 @@ main {
 #sidebar {
   max-width: 25%;
   min-width: 250px;
-  background: greenyellow;
+  background: var(--darkgray);
   padding: 2em;
 }
 
@@ -15,9 +15,20 @@ main {
   display: block;
 }
 
+#sidebar h3 {
+  color: white;
+}
+
 .sidebar-check {
   padding: 0 1.5em;
+  color: var(--gray);
 }
+
+.sidebar-check:hover {
+  color: greenyellow;
+  transition: color 0.5s ease;
+}
+
 .sidebar-check input[type='checkbox'] {
   position: absolute;
   opacity: 0;
