@@ -20,7 +20,7 @@ const getRecentItems = items => ({type: GOT_RECENT_ITEMS, items})
  */
 export const getOrderHistory = userId => async dispatch => {
   try {
-    const res = await axios.get(`/api/orders/${userId}`)
+    const res = await axios.get(`/api/orders/`)
     dispatch(getRecentItems(res.data || defaultOrderHisory.recentItems))
   } catch (err) {
     console.error(err)
