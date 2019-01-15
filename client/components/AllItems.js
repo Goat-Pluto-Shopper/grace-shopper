@@ -7,10 +7,6 @@ import ListItems from './ListItems'
 import queryString from 'query-string'
 // const querystring = require('querystring');
 // const queryString = require('query-string');
-// material ui imports
-import Paper from '@material-ui/core/Paper'
-import Grid from '@material-ui/core/Grid'
-
 import NotFound from './NotFound'
 import SideBar from './SideBar'
 
@@ -58,15 +54,9 @@ class AllItems extends Component {
       return (
         <React.Fragment>
           <SideBar />
-          <Grid container spacing={24}>
-            {allGames.map(game => {
-              return (
-                <Grid item xs={12} md={4} sm={6} key={game.id}>
-                  <ListItems game={game} />
-                </Grid>
-              )
-            })}
-          </Grid>
+          {allGames.map(game => {
+            return <ListItems game={game} />
+          })}
         </React.Fragment>
       )
     }
