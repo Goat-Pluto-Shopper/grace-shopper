@@ -21,7 +21,7 @@ class UserProfile extends Component {
     return (
       <div className="profileContainer">
         {user === undefined ? null : (
-          <div className="profileElement">
+          <div className="profileLeft">
             <h1 id="profile">Profile</h1>
             <div>
               <h3>
@@ -31,18 +31,25 @@ class UserProfile extends Component {
             </div>
           </div>
         )}
-        <div className="profileElement">
+        <div className="profileRight">
           <h1>Order History</h1>
           {items[0] === undefined ? null : (
-            <Grid container spacing={24}>
+            <div>
               {items.map(item => {
                 return (
-                  <Grid item xs={12} sm={4} key={item.id}>
-                    <ListItems game={item} />
-                  </Grid>
+                  <div key={item.id} className="orderItem">
+                    <div className="orderItemLeft">
+                      <img src={item.imageUrl} />
+                    </div>
+                    <div className="orderItemRight" />
+                    <div className="orderPrice">
+                      ${(item.price / 100).toFixed(2)}
+                    </div>
+                    <br />
+                  </div>
                 )
               })}
-            </Grid>
+            </div>
           )}
         </div>
       </div>

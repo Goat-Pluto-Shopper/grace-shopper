@@ -1,7 +1,39 @@
 h1 {
   text-align: center;
+  margin-bottom: 2rem;
 }
 
 .profileContainer {
+  padding-top: 2rem;
   display: flex;
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+
+.profileLeft {
+  width: 40%;
+}
+
+.profileRight {
+  width: 60%;
+}
+
+.orderItem {
+  display: flex;
+  max-height: 250px;
+  margin-bottom: 2rem;
+  align-items: center;
+}
+
+.orderItemRight {
+  /* border: 3px solid blue; */
+  margin-left: 2rem;
+  display: flex;
+}
+
+.orderItemLeft img {
+  /* max-width: 100%; */
+  width: 200px;
+  height: auto;
+  object-fit: contain;
 }
