@@ -78,13 +78,7 @@ const styles = theme => ({
 function Header(props) {
   const {classes} = props
 
-  return (
-    <Grid container spacing={24}>
-      <Grid item xs={12}>
-        <div id="header" />
-      </Grid>
-    </Grid>
-  )
+  return <div id="header" />
 }
 
 Header.propTypes = {
