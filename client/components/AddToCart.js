@@ -3,10 +3,6 @@ import {connect} from 'react-redux'
 import {addToCart} from '../store/cart'
 
 class AddToCart extends Component {
-  constructor() {
-    super()
-  }
-
   render() {
     return (
       <button

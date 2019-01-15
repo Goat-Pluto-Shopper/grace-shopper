@@ -41,7 +41,6 @@ class AllItems extends Component {
   }
 
   render() {
-    // console.log(this.props, 'props');
     let allGames = this.props.allItems
     if (allGames.length === 0) {
       return (

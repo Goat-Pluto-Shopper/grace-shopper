@@ -20,7 +20,7 @@ const Navbar = props => {
         </Link>
       </div>
       <div id="nav">
-        <ul>
+        <ul id="nav-categories">
           <Link to="/">
             <li>All GAMES</li>
           </Link>
