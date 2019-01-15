@@ -36,7 +36,7 @@ class SingleItem extends Component {
             </div>
             <div id="singleItemInfo">
               <h1>{selectedItem.name}</h1>
-              <h3>${(selectedItem.price / 100).toFixed(2)}</h3>
+              <h3 id="price">${(selectedItem.price / 100).toFixed(2)}</h3>
               <p>{selectedItem.description}</p>
               {/* need to add quantity component here */}
               <AddToCart item={this.props.selectedItem} />
@@ -46,7 +46,8 @@ class SingleItem extends Component {
 
         {relatedItems.length > 0 ? (
           <div>
-            <h3>Related items</h3>
+            <h3 id="related">Related items</h3>
+            <hr id="relatedHR" />
             <div id="singleRelatedContainer">
               {relatedItems.map(game => (
                 <ListItems key={game.id} game={game} />

@@ -26,11 +26,11 @@ const Navbar = props => {
           </Link>
           •
           <Link to="/board">
-            <li>Board</li>
+            <li>Board Games</li>
           </Link>
           •
           <Link to="/card">
-            <li>Card</li>
+            <li>Card Games</li>
           </Link>
         </ul>
       </div>
@@ -42,8 +42,9 @@ const Navbar = props => {
             <span className="nav-login">Login</span>
           </Link>
         )}
-        <Link to="/cart">
+        <Link to="/cart" className="user-nav">
           <i className="fas fa-shopping-cart" />
+          &nbsp;
           {cartNum(props.cart) > 0 && cartNum(props.cart)}
         </Link>
       </div>
