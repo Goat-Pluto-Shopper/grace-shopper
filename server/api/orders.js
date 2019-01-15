@@ -2,26 +2,27 @@ const router = require('express').Router()
 const {User, Order, Item, OrderedItems} = require('../db/models')
 const {v4} = require('node-uuid').v4()
 
-// GET /api/orders/userId - user's past items
-router.get('/:userId', async (req, res, next) => {
+//authentication
+function isAuthenticated(req, res, next) {
+  if (req.user.id) {
+    console.log('i hite req user from auteh')
+    return next()
+  } else {
+    console.log('i hit err')
+    res.status(403).redirect('/')
+  }
+}
+
+// GET /api/orders/ - user's past items
+router.get('/', isAuthenticated, async (req, res, next) => {
   try {
-    if (req.session.user === parseInt(req.params.userId)) {
-      // userid needs to be in the request body
-      const orders = await Order.findAll({
-        where: {userId: req.params.userId},
-        include: [{model: Item}],
-        order: [['id', 'DESC']]
-      })
-      res.json(orders[0].items)
-      console.log(
-        req.session.user,
-        'req session user',
-        req.params.userId,
-        'params'
-      )
-    } else {
-      res.status(403).end()
-    }
+    // userid needs to be in the request body
+    const orders = await Order.findAll({
+      where: {userId: req.user.id},
+      include: [{model: Item}],
+      order: [['id', 'DESC']]
+    })
+    res.json(orders[0].items)
   } catch (err) {
     next(err)
   }
