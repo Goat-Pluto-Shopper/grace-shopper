@@ -46,33 +46,34 @@ router.post('/logout', (req, res) => {
   res.status(200).end()
 })
 
-// router.get('/me', (req, res) => {
-//   console.log(req.user, 'req user from auth me')
-//   res.json(req.user)
-// })
-
-router.get('/me', async (req, res, next) => {
-  try {
-    if (!req.session.userId) {
-      if (req.user) {
-        req.session.user = req.user.id
-        res.json(req.user)
-      } else {
-        req.session.user = 'guest'
-      }
-    } else {
-      let user = await User.findById(req.session.userId)
-      if (user) {
-        req.session.user = user.id
-        res.json(user)
-      } else {
-        req.session.user = 'guest'
-        next()
-      }
-    }
-  } catch (error) {
-    next(error)
-  }
+router.get('/me', (req, res) => {
+  // console.log(req.user, 'req user from auth me')
+  // console.log(req.session.user.dataValues, 'req user from auth me');
+  res.json(req.user)
 })
+
+// router.get('/me', async (req, res, next) => {
+//   try {
+//     if (!req.session.userId) {
+//       if (req.user) {
+//         req.session.user = req.user.id
+//         res.json(req.user)
+//       } else {
+//         req.session.user = 'guest'
+//       }
+//     } else {
+//       let user = await User.findById(req.session.userId)
+//       if (user) {
+//         req.session.user = user.id
+//         res.json(user)
+//       } else {
+//         req.session.user = 'guest'
+//         next()
+//       }
+//     }
+//   } catch (error) {
+//     next(error)
+//   }
+// })
 
 router.use('/google', require('./google'))
