@@ -1,3 +1,36 @@
+#cartContainer {
+  padding-top: 2rem;
+  width: 80%;
+  margin: auto;
+}
+
+#cart {
+  display: flex;
+}
+
+.cartItem {
+  display: flex;
+}
+
+.cartItemLeft {
+  background-color: white;
+  padding: 2rem;
+}
+
+.cartLeft {
+  width: 60%;
+}
+
+.cartLeft img {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.cartRight {
+  width: 40%;
+}
+
 .quantityBlock {
   display: flex;
   flex-direction: row;

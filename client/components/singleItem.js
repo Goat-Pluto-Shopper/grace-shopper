@@ -29,32 +29,34 @@ class SingleItem extends Component {
     const {selectedItem, relatedItems} = this.props
     return (
       <React.Fragment>
-        {this.props.selectedItem.name && (
-          <div id="singleItemContainer">
-            <div id="singleItemImg">
-              <img src={selectedItem.imageUrl} />
+        <div id="singleItemComponentContainer">
+          {this.props.selectedItem.name && (
+            <div id="singleItemContainer">
+              <div id="singleItemImg">
+                <img src={selectedItem.imageUrl} />
+              </div>
+              <div id="singleItemInfo">
+                <h1>{selectedItem.name}</h1>
+                <h3 id="price">${(selectedItem.price / 100).toFixed(2)}</h3>
+                <p>{selectedItem.description}</p>
+                {/* need to add quantity component here */}
+                <AddToCart item={this.props.selectedItem} />
+              </div>
             </div>
-            <div id="singleItemInfo">
-              <h1>{selectedItem.name}</h1>
-              <h3 id="price">${(selectedItem.price / 100).toFixed(2)}</h3>
-              <p>{selectedItem.description}</p>
-              {/* need to add quantity component here */}
-              <AddToCart item={this.props.selectedItem} />
-            </div>
-          </div>
-        )}
+          )}
 
-        {relatedItems.length > 0 ? (
-          <div>
-            <h3 id="related">Related items</h3>
-            <hr id="relatedHR" />
-            <div id="singleRelatedContainer">
-              {relatedItems.map(game => (
-                <ListItems key={game.id} game={game} />
-              ))}
+          {relatedItems.length > 0 ? (
+            <div>
+              <h3 id="related">Related items</h3>
+              <hr id="relatedHR" />
+              <div id="singleRelatedContainer">
+                {relatedItems.map(game => (
+                  <ListItems key={game.id} game={game} />
+                ))}
+              </div>
             </div>
-          </div>
-        ) : null}
+          ) : null}
+        </div>
       </React.Fragment>
     )
   }

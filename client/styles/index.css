@@ -59,6 +59,7 @@ h4 {
   font-family: 'Dosis', sans-serif;
   text-transform: uppercase;
   letter-spacing: 0.2rem;
+  color: white;
 }
 
 p {
@@ -86,6 +87,7 @@ button {
   border-radius: 3px;
   border: none;
 }
+
 /* tablet */
 @media only screen and (min-width: 768px) {
   /* body {

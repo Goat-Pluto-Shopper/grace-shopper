@@ -4,27 +4,6 @@ import React, {Component} from 'react'
 import {incrementQuantity, decrementQuantity} from '../store/'
 import Button from '@material-ui/core/Button'
 
-// const fakeItems = [
-//   {
-//     id: 1,
-//     imageUrl: 'https://place-hold.it/300',
-//     name: 'Uno',
-//     price: 10.28
-//   },
-//   {
-//     id: 2,
-//     imageUrl: 'https://place-hold.it/300',
-//     name: 'Avalon',
-//     price: 19.99
-//   },
-//   {
-//     id: 3,
-//     imageUrl: 'https://place-hold.it/300',
-//     name: 'Risk',
-//     price: 19.97
-//   }
-// ]
-
 const totalPrice = cart =>
   cart.reduce((total, items) => items.price * items.cartQuantity + total, 0)
 
@@ -39,48 +18,57 @@ class Cart extends Component {
     console.log('cart', cart)
 
     return (
-      <div>
+      <div id="cartContainer">
         <h1>Shopping Cart</h1>
-        {/* FOR EACH ITEM */}
-        <div className="cartLeft">
-          {cart.map(item => {
-            return (
-              <div key={item.id}>
-                <img src={item.imageUrl} />
-                <p>{item.name}</p>
-                <p>${item.price}</p>
-                <div className="quantityBlock">
-                  <button
-                    type="button"
-                    name="increment"
-                    onClick={() => this.props.decrementQuantity(item)}
-                  >
-                    -
-                  </button>
-                  <p>{item.cartQuantity}</p>
-                  <button
-                    type="button"
-                    name="decrement"
-                    onClick={() => this.props.incrementQuantity(item)}
-                  >
-                    +
-                  </button>
+        <div id="cart">
+          {/* FOR EACH ITEM */}
+          <div className="cartLeft">
+            {cart.map(item => {
+              return (
+                <div key={item.id} className="cartItem">
+                  <div className="cartItemLeft">
+                    <img src={item.imageUrl} />
+                  </div>
+                  <div className="cartItemRight">
+                    <h2>{item.name}</h2>
+                    <p>${item.price}</p>
+                    <div className="quantityBlock">
+                      <button
+                        type="button"
+                        name="increment"
+                        onClick={() => this.props.decrementQuantity(item)}
+                      >
+                        -
+                      </button>
+                      <p>{item.cartQuantity}</p>
+                      <button
+                        type="button"
+                        name="decrement"
+                        onClick={() => this.props.incrementQuantity(item)}
+                      >
+                        +
+                      </button>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            )
-          })}
-        </div>
-        <div className="cartRight">
-          <div className="totalPrice">
-            TOTAL: ${totalPrice(cart).toFixed(2)}
+              )
+            })}
+          </div>{' '}
+          {/* end cartLeft div */}
+          <div className="cartRight">
+            <div className="totalPrice">
+              TOTAL: ${totalPrice(cart).toFixed(2)}
+            </div>
+            <Link to="/checkout">
+              <Button variant="contained" color="primary" type="checkout">
+                CHECKOUT
+              </Button>
+            </Link>
           </div>
-          <Link to="/checkout">
-            <Button variant="contained" color="primary" type="checkout">
-              CHECKOUT
-            </Button>
-          </Link>
+          {/* end cartRight div */}
         </div>
-      </div>
+        {/* end cart div */}
+      </div> // end entire component div
     )
   }
 }
