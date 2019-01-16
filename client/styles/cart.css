@@ -60,6 +60,7 @@
 .quantityBlock button:hover {
   background-color: var(--teal);
   transition: background-color 0.5s ease;
+  cursor: pointer;
 }
 
 .quantityBlock p {
@@ -83,4 +84,5 @@
 .checkout:hover {
   background-color: var(--highlight);
   transition: background-color 0.5s ease;
+  cursor: pointer;
 }

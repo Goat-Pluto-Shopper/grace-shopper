@@ -31,8 +31,7 @@ const styles = theme => ({
       width: 400,
       marginLeft: 'auto',
       marginRight: 'auto'
-    },
-    backgroundColor: 'transparent'
+    }
   },
   paper: {
     marginTop: theme.spacing.unit * 8,
@@ -70,7 +69,7 @@ const LogInForm = props => {
         <CssBaseline />
         <Paper className={classes.paper}>
           <Typography component="h1" variant="h5" className={classes.center}>
-            Sign in
+            Login
           </Typography>
           <form className={classes.form} onSubmit={props.handleSubmit}>
             <FormControl margin="normal" required fullWidth>
@@ -92,7 +91,7 @@ const LogInForm = props => {
               color="primary"
               className={classes.submit}
             >
-              Sign in
+              Login
             </Button>
             {error &&
               error.response && (
