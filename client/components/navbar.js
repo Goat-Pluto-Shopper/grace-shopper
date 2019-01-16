@@ -10,52 +10,54 @@ const cartNum = cart =>
 
 const Navbar = props => {
   return (
-    <nav id="nav-top">
-      <div id="ico">
-        <Link to="/">
-          <h1 className="stat-font" style={{margin: '0'}}>
-            Pluto Games
-          </h1>
-        </Link>
-      </div>
-      <div id="nav">
-        <ul id="nav-categories">
+    <div id="nav-sticky">
+      <nav id="nav-top">
+        <div id="ico">
           <Link to="/">
-            <li>All GAMES</li>
+            <h1 className="stat-font" style={{margin: '0'}}>
+              Pluto Games
+            </h1>
           </Link>
-          •
-          <Link to="/board">
-            <li>Board Games</li>
-          </Link>
-          •
-          <Link to="/card">
-            <li>Card Games</li>
-          </Link>
-        </ul>
-      </div>
-      <div id="nav-right">
-        {props.isLoggedIn ? (
-          <UserNavBar firstName={props.user.firstName} />
-        ) : (
-          <div className="dropdown">
-            <span className="nav-login user-nav dropbtn">
-              <Link to="/login">Login</Link>
-            </span>
-            <div className="dropdown-content">
-              <div>
-                <Link to="/login">Log In</Link>
-                <Link to="/signup">Sign Up</Link>
+        </div>
+        <div id="nav">
+          <ul id="nav-categories">
+            <Link to="/">
+              <li>All GAMES</li>
+            </Link>
+            •
+            <Link to="/board">
+              <li>Board Games</li>
+            </Link>
+            •
+            <Link to="/card">
+              <li>Card Games</li>
+            </Link>
+          </ul>
+        </div>
+        <div id="nav-right">
+          {props.isLoggedIn ? (
+            <UserNavBar firstName={props.user.firstName} />
+          ) : (
+            <div className="dropdown">
+              <span className="nav-login user-nav dropbtn">
+                <Link to="/login">Login</Link>
+              </span>
+              <div className="dropdown-content">
+                <div>
+                  <Link to="/login">Log In</Link>
+                  <Link to="/signup">Sign Up</Link>
+                </div>
               </div>
             </div>
-          </div>
-        )}
-        <Link to="/cart" className="user-nav">
-          <i className="fas fa-shopping-cart" />
-          &nbsp;
-          {cartNum(props.cart) > 0 && cartNum(props.cart)}
-        </Link>
-      </div>
-    </nav>
+          )}
+          <Link to="/cart" className="user-nav">
+            <i className="fas fa-shopping-cart" />
+            &nbsp;
+            {cartNum(props.cart) > 0 && cartNum(props.cart)}
+          </Link>
+        </div>
+      </nav>
+    </div>
   )
 }
 
