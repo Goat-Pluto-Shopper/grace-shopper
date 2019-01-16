@@ -1,12 +1,10 @@
 import React from 'react'
 
-import {Navbar, Header, Footer, AllItems} from './components'
+import {Navbar, Header, Footer} from './components'
 import Routes from './routes'
-import {connect} from 'react-redux'
-import {withRouter} from 'react-router-dom'
 import {Elements, StripeProvider} from 'react-stripe-elements'
 
-const App = props => {
+const App = () => {
   return (
     <div>
       {/* might need to put somewhere else because not all pages have header */}
@@ -27,10 +25,4 @@ const App = props => {
   )
 }
 
-const mapState = state => {
-  return {
-    sideBarToggle: state.sideBarToggle
-  }
-}
-
-export default withRouter(connect(mapState)(App))
+export default App
