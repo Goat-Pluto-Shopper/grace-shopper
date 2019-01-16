@@ -38,9 +38,17 @@ const Navbar = props => {
         {props.isLoggedIn ? (
           <UserNavBar firstName={props.user.firstName} />
         ) : (
-          <Link to="/login">
-            <span className="nav-login">Login</span>
-          </Link>
+          <div className="dropdown">
+            <span className="nav-login user-nav dropbtn">
+              <Link to="/login">Login</Link>
+            </span>
+            <div className="dropdown-content">
+              <div>
+                <Link to="/login">Log In</Link>
+                <Link to="/signup">Sign Up</Link>
+              </div>
+            </div>
+          </div>
         )}
         <Link to="/cart" className="user-nav">
           <i className="fas fa-shopping-cart" />
@@ -50,6 +58,25 @@ const Navbar = props => {
       </div>
     </nav>
   )
+}
+
+{
+  /* <React.Fragment>
+              <Link to="/login">
+                <span className="nav-login">Login</span>
+              </Link>
+            </React.Fragment> */
+}
+
+{
+  /* <div className="dropdown">
+  <span className="nav-login user-nav dropbtn"><Link to="/login">Login</Link></span>
+  <div className="dropdown-content">
+    <div>
+      <Link to="/signup">Sign Up</Link>
+    </div>
+  </div>
+</div> */
 }
 
 /**

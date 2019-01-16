@@ -98,9 +98,13 @@ main {
   width: 100%;
 }
 
-#login-new {
+.login-new {
   width: 45%;
   margin: auto;
   padding: 5em 3em;
   padding-top: 2em;
+}
+
+.form-error {
+  color: red;
 }

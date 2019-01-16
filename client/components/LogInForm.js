@@ -65,7 +65,7 @@ const LogInForm = props => {
   const {name, displayName, handleSubmit, error} = props
   const {classes} = props
   return (
-    <div id="login-new">
+    <div className="login-new">
       <main className={classes.main}>
         <CssBaseline />
         <Paper className={classes.paper}>
@@ -94,6 +94,10 @@ const LogInForm = props => {
             >
               Sign in
             </Button>
+            {error &&
+              error.response && (
+                <div className="form-error"> {error.response.data} </div>
+              )}
           </form>
         </Paper>
       </main>
@@ -119,6 +123,7 @@ const mapLogin = state => {
 const mapDispatch = dispatch => {
   return {
     handleSubmit(evt) {
+      console.log(evt.target.email.value, 'emailevalue from login')
       evt.preventDefault()
       const email = evt.target.email.value
       const password = evt.target.password.value
