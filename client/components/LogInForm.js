@@ -26,8 +26,7 @@ const styles = theme => ({
       width: 400,
       marginLeft: 'auto',
       marginRight: 'auto'
-    },
-    backgroundColor: 'transparent'
+    }
   },
   paper: {
     marginTop: theme.spacing.unit * 8,
@@ -60,12 +59,12 @@ const LogInForm = props => {
   const {name, displayName, handleSubmit, error} = props
   const {classes} = props
   return (
-    <div id="login-new">
+    <div className="login-new">
       <main className={classes.main}>
         <CssBaseline />
         <Paper className={classes.paper}>
           <Typography component="h1" variant="h5" className={classes.center}>
-            Sign in
+            Login
           </Typography>
           <form className={classes.form} onSubmit={props.handleSubmit}>
             <FormControl margin="normal" required fullWidth>
@@ -87,8 +86,12 @@ const LogInForm = props => {
               color="primary"
               className={classes.submit}
             >
-              Sign in
+              Login
             </Button>
+            {error &&
+              error.response && (
+                <div className="form-error"> {error.response.data} </div>
+              )}
           </form>
         </Paper>
       </main>
@@ -107,6 +110,7 @@ const mapLogin = state => {
 const mapDispatch = dispatch => {
   return {
     handleSubmit(evt) {
+      console.log(evt.target.email.value, 'emailevalue from login')
       evt.preventDefault()
       const email = evt.target.email.value
       const password = evt.target.password.value
