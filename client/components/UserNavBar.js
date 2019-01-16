@@ -11,7 +11,6 @@ const UserNavBar = props => {
         <div>
           <Link to="/profile">Profile</Link>
         </div>
-        {/* logout should not me a link mb. should be onclick dispatch logout */}
         <div onClick={() => props.logout()}>
           <Link to="#">Log Out</Link>
         </div>

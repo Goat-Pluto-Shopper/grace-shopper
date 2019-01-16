@@ -39,6 +39,7 @@ router.post('/', async (req, res, next) => {
       })
       checkoutInfo.userId = Number(guestUser.id)
     }
+    console.log(checkoutInfo)
     const order = await Order.create({
       total: checkoutInfo.total,
       streetAddress: checkoutInfo.streetAddress,
@@ -53,7 +54,7 @@ router.post('/', async (req, res, next) => {
     // loop over cart items
     for (let i = 0; i < cart.length; i++) {
       //creates one row in OrderedItems table for each item
-      let orderedItem = await OrderedItems.create({
+      await OrderedItems.create({
         price: Number(cart[i].price),
         itemQuantity: Number(cart[i].cartQuantity),
         orderId: Number(order.id),
@@ -61,7 +62,7 @@ router.post('/', async (req, res, next) => {
       })
     }
 
-    res.json(order)
+    res.sendStatus(201)
   } catch (err) {
     next(err)
   }

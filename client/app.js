@@ -21,9 +21,7 @@ const App = props => {
             </Elements>
           </StripeProvider>
         </div>
-        {/* <AllItems /> */}
       </main>
-      {/* right here */}
       <Footer />
     </div>
   )

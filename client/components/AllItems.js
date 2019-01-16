@@ -4,7 +4,6 @@ import {connect} from 'react-redux'
 import {fetchAllItems} from '../store/item'
 import {Link} from 'react-router-dom'
 import ListItems from './ListItems'
-import queryString from 'query-string'
 import NotFound from './NotFound'
 import SideBar from './SideBar'
 

@@ -13,7 +13,6 @@ import {
   CheckoutForm
 } from './components'
 import {me} from './store'
-import singleItem from './components/singleItem'
 
 /**
  * COMPONENT

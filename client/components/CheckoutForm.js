@@ -8,8 +8,6 @@ import Grid from '@material-ui/core/Grid'
 import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
 import TextField from '@material-ui/core/TextField'
-import FormControlLabel from '@material-ui/core/FormControlLabel'
-import Checkbox from '@material-ui/core/Checkbox'
 
 // helper function to calculate price
 const totalPrice = cart =>
@@ -62,9 +60,7 @@ class CheckoutForm extends Component {
       amount: this.state.total
     })
     console.log(response.status, 'response')
-    // console.log(response.ok, 'response ok');
     if (response.status == 200) {
-      console.log('i hit response ok')
       this.setState({complete: true})
     }
   }
@@ -203,9 +199,6 @@ class CheckoutForm extends Component {
 
         <div className="outcome">
           <div className="error" />
-          {/* <div className="success">
-            Success! Your Stripe token is <span className="token" />
-          </div> */}
         </div>
       </form>
     )

@@ -38,7 +38,6 @@ class SingleItem extends Component {
                 <h1>{selectedItem.name}</h1>
                 <h3 id="price">${(selectedItem.price / 100).toFixed(2)}</h3>
                 <p>{selectedItem.description}</p>
-                {/* need to add quantity component here */}
                 <AddToCart item={this.props.selectedItem} />
               </div>
             </div>
