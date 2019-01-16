@@ -3,13 +3,11 @@ import {withRouter} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {fetchToggle} from '../store/sideBarToggle'
 import {getOrderHistory} from '../store/orderHistory'
-import Grid from '@material-ui/core/Grid'
-import ListItems from './ListItems'
 
 class UserProfile extends Component {
   componentDidMount() {
     this.props.fetchToggle(false)
-    this.props.getOrderHistory(this.props.user.id)
+    this.props.getOrderHistory()
   }
 
   componentWillUnmount() {
@@ -64,7 +62,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   fetchToggle: state => dispatch(fetchToggle(state)),
-  getOrderHistory: userId => dispatch(getOrderHistory(userId))
+  getOrderHistory: () => dispatch(getOrderHistory())
 })
 
 export default withRouter(

@@ -151,7 +151,7 @@ const items = [
     tags: ['strategy']
   },
   {
-    name: 'Monolopoly Deal',
+    name: 'Monopoly Deal',
     description:
       "Get a handy way to play the classic property-trading game! Be the first collect 3 full property sets of different colors, and you'll win the Monopoly Deal Card Game. You'll pick up cards when it's your turn and play Action cards to charge players rent, steal their cards or demand money for your birthday. Build up property sets, gather piles of money and keep wheeling and dealing until you're the Monopoly Deal winner! Monopoly and all related characters are trademarks of Hasbro.",
     price: 670,

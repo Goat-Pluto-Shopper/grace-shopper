@@ -124,9 +124,7 @@ class CheckoutForm extends Component {
       amount: this.state.total
     })
     console.log(response.status, 'response')
-    // console.log(response.ok, 'response ok');
     if (response.status == 200) {
-      console.log('i hit response ok')
       this.setState({complete: true})
     }
   }

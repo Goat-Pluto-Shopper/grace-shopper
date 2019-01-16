@@ -13,7 +13,6 @@ const Navbar = props => {
     <nav id="nav-top">
       <div id="ico">
         <Link to="/">
-          {/* <img src="imgs/placeholderLogo.png" className="nav-logo" alt="logo" /> */}
           <h1 className="stat-font" style={{margin: '0'}}>
             Pluto Games
           </h1>

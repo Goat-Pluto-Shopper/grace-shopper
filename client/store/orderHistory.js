@@ -18,7 +18,7 @@ const getRecentItems = items => ({type: GOT_RECENT_ITEMS, items})
 /**
  * THUNK CREATORS
  */
-export const getOrderHistory = userId => async dispatch => {
+export const getOrderHistory = () => async dispatch => {
   try {
     const res = await axios.get(`/api/orders/`)
     dispatch(getRecentItems(res.data || defaultOrderHisory.recentItems))

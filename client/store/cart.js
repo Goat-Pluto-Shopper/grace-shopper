@@ -6,11 +6,6 @@ export const INCREMENT_QUANTITY = 'INCREMENT_QUANTITY'
 export const DECREMENT_QUANTITY = 'DECREMENT_QUANTITY'
 export const SUBMIT_CART_TO_SERVER = 'SUBMIT_CART_TO_SERVER'
 
-// INITIAL STATE
-// {
-//   cart: []
-// }
-
 // ACTION CREATORS
 export const addToCart = item => ({
   type: ADD_TO_CART,
