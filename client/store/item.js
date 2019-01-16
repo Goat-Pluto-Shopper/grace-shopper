@@ -6,7 +6,6 @@ import axios from 'axios'
 const GET_ALL_ITEMS = 'GET_ALL_ITEMS'
 const GET_SINGLE_ITEM = 'GET_SINGLE_ITEM'
 const GET_RELATED_ITEMS = 'GET_RELATED_ITEMS'
-const GET_QUERY_ITEMS = 'GET_QUERY_ITEMS'
 
 /**
  * INITIAL STATE
@@ -32,11 +31,6 @@ const getSingleItem = item => ({
 
 const getRelatedItems = items => ({
   type: GET_RELATED_ITEMS,
-  items
-})
-
-const getQueryItems = items => ({
-  type: GET_QUERY_ITEMS,
   items
 })
 

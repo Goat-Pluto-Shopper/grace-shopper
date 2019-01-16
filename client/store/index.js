@@ -4,7 +4,6 @@ import thunkMiddleware from 'redux-thunk'
 import {composeWithDevTools} from 'redux-devtools-extension'
 import user from './user'
 import item from './item'
-import sideBarToggle from './sideBarToggle'
 import cart from './cart'
 import {throttle} from 'lodash'
 import orderHistory from './orderHistory'
@@ -14,7 +13,7 @@ import {loadState, saveState} from './localStorage'
 
 const persistedState = loadState()
 
-const reducer = combineReducers({user, item, sideBarToggle, cart, orderHistory})
+const reducer = combineReducers({user, item, cart, orderHistory})
 const middleware = composeWithDevTools(
   applyMiddleware(thunkMiddleware, createLogger({collapsed: true}))
 )
@@ -31,6 +30,5 @@ store.subscribe(
 export default store
 export * from './user'
 export * from './item'
-export * from './sideBarToggle'
 export * from './cart'
 export * from './orderHistory'
