@@ -14,6 +14,13 @@ a:visited {
   color: white;
   display: flex;
   flex: 1;
+  position: fixed;
+  z-index: 5;
+}
+
+#nav-sticky {
+  width: 100%;
+  min-height: 50px;
 }
 
 .nav-logo {
